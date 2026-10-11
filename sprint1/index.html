@@ -69,8 +69,6 @@
          <li><code>/</code> (10 GB): partició principal on s'instal·la el sistema operatiu i les aplicacions.
       
       </li>
-      <p> Un cop reiniciat el sistema, comprova que arrenca correctament i que
-          reconeix tot el maquinari abans de continuar amb el següent apartat.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="apartat2">
@@ -81,51 +79,46 @@
     </article>
     <article class="apartat" id="apartat3">
       <h2>3. Gestors arrencada</h2>
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-         blanditiis praesentium voluptatum deleniti atque corrupti. Cada
-         usuari nou s'hauria d'assignar al <strong>grup mínim necessari</strong>
-         segons les tasques que ha de fer.</p>
-      <img src="../img/exemple.svg" alt="Exemple de captura de pantalla de la gestió d'usuaris">
-      <ul>
-        <li>Crear l'usuari amb <code>useradd</code>.</li>
-        <li>Assignar contrasenya amb <code>passwd</code>.</li>
-        <li>Afegir l'usuari als grups necessaris amb <code>usermod -aG</code>.</li>
-      </ul>
-      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
+     Un gestor d'arrencada és el programa que s'executa en encendre l'ordinador i permet triar quin sistema operatiu carregar. A Ubuntu és GRUB.</p>
+      <ol>
+        <li>
+          <p> Primer vaig entrar a <code>/boot</code> i vaig esborrar la carpeta <code>grub/</code> amb <code>sudo rm -r grub/</code>.</p>
+          <img src="../img/eliminar-grub-1.png" alt="Esborrat de la carpeta grub">
+        </li>
+        <li> 
+          <p> En reiniciar, la màquina no va arrencar i va mostrar l'error <em>"normal.mod not found"</em>, amb el mode <code>grub rescue&gt;</code> </p>
+           <img src="../img/error-grub.png" alt="Exemple de captura de pantalla de la gestió d'usuaris">
+        </li>
+         <li>
+    <p>Vaig intentar arrencar amb Super Grub2 Disk, connectant la seva ISO a la unitat òptica de VirtualBox. Des del seu menú no vaig poder arrencar el sistema.</p>
+    <img src="../img/menu-grub-3.png" alt="Menú de Super Grub2 Disk">
+  </li>
+     <li>
+    <p>Per tant vaig fer ús del Boot Repair. Amb aquesta eina es va reparar l'arrencada.</p>
+    <img src="../img/gestor-boot-4.png" alt="Diàleg de Boot Repair amb l'arrencada reparada">
+  </li>
+      <li>
+    <p>Per usar Boot Repair vaig connectar la seva ISO a la configuració de VirtualBox.</p>
+    <img src="../img/gestor-5.png" alt="Configuració de VirtualBox amb la ISO connectada">
+  </li>
+  <li>
+    <p>Un cop reparat, la màquina va arrencar fins a l'escriptori d'Ubuntu, i la carpeta <code>grub</code> torna a estar present a <code>/boot</code>.</p>
+    <img src="../img/funciona.png" alt="Escriptori d'Ubuntu després de reparar l'arrencada">
+  </li>
+</ol>
+<p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="apartat4">
       <h2>4.Xarxa basicà</h2>
-      <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-         tempore, cum soluta nobis est eligendi optio cumque nihil impedit.
-         Abans de donar per acabat el sprint, revisa aquest resum:</p>
-      <ul>
-        <li>El sistema arrenca sense errors.</li>
-        <li>La xarxa respon correctament als <em>pings</em>.</li>
-        <li><strong>Els usuaris i grups creats coincideixen amb l'enunciat.</strong></li>
-      </ul>
-      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-         fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-         sequi nesciunt.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
      <h2>5.Comandes generals</h2>
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-         blanditiis praesentium voluptatum deleniti atque corrupti. Cada
-         usuari nou s'hauria d'assignar al <strong>grup mínim necessari</strong>
-         segons les tasques que ha de fer.</p>
-      <img src="../img/exemple.svg" alt="Exemple de captura de pantalla de la gestió d'usuaris">
-      <ul>
-        <li>Crear l'usuari amb <code>useradd</code>.</li>
-        <li>Assignar contrasenya amb <code>passwd</code>.</li>
-        <li>Afegir l'usuari als grups necessaris amb <code>usermod -aG</code>.</li>
-      </ul>
+      <p>Les comandes generals són les ordres bàsiques de la terminal per navegar pel sistema i gestionar fitxers. Amb cd entro a un directori, amb ls veig el que hi ha, i amb cat o nano puc veure o editar un fitxer. Per instal·lar aplicacions faig servir apt, amb sudo quan cal permisos d’administrador.</p>
+      <img src="../img/comandes-generals-1.png" alt="Exemple de captura de pantalla de la gestió d'usuaris">
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
       <h2>6.Instal·lacions aplicacions</h2>
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-         blanditiis praesentium voluptatum deleniti atque corrupti. Cada
-         usuari nou s'hauria d'assignar al <strong>grup mínim necessari</strong>
-         segons les tasques que ha de fer.</p>
+      <p></p>
       <img src="../img/exemple.svg" alt="Exemple de captura de pantalla de la gestió d'usuaris">
       <ul>
         <li>Crear l'usuari amb <code>useradd</code>.</li>
