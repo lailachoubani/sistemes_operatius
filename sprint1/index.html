@@ -47,46 +47,36 @@
 
       <ol type="a">
      <li>
-         <strong>Crear la màquina virtual a VirtualBox.</strong>
+         <strong>Crear la màquina virtual.</strong>
          Nom <code>ubudesk26.04</code>, carpeta <code>/home/alumnat/VirtualBox VMs</code>
          i imatge ISO (baixada a la carpeta Baixades) <code>ubuntu-26.04.1-desktop-amd64.iso</code>.
          <br>
-          <img src="../img/creació maquina.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
-        <ol type="b">Creació del disc dur virtual.</ol>
-     </li>
+         <img src="../img/creacio-maquina.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+        </li>    
          <li>
-         <strong>Creació del disc dur virtual.</strong>
-         <br>
-        <img src="../img/creació maquina 2.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+         <strong> Creació del disc dur virtual.</strong><br> 
+           Disc de 30 GB. <br>
+        <img src="../img/creacio-maquina-2.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
      </li>
         <li>
-        <strong>Configurar el particionat del disc.</strong>
-       <br>
-          <img src="../img/creació maquina 3.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
-          <img src="../img/creació maquina 4.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
-          <img src="../img/creaciçó maquina 5.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
-          <img src="../img/creació maquina 6.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+        <strong>Configurar el particionat del disc.</strong> <br>
+        Particions: <code>/</code> (10 GB), <code>/home</code> (15 GB) i <code>/boot</code> (2 GB).<br>
+          <img src="../img/creacio-maquina-4.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+          <li><code>/home</code> (15 GB): partició on es guarden els fitxers personals de l'usuari, separada del sistema.</li>
+          <img src="../img/creacio-maquina-5.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+         <li><code>/boot</code> (2 GB): partició on es guarden els fitxers d'arrencada, com el nucli i GRUB.</li>
+          <img src="../img/creacio-maquina-6.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+         <li><code>/</code> (10 GB): partició principal on s'instal·la el sistema operatiu i les aplicacions.
+      
       </li>
-      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Un cop reiniciat el sistema, comprova que arrenca correctament i que
-         reconeix tot el maquinari abans de continuar amb el següent apartat.</p>
-          <img src="../img/creació maquina3.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
+      <p> Un cop reiniciat el sistema, comprova que arrenca correctament i que
+          reconeix tot el maquinari abans de continuar amb el següent apartat.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="apartat2">
       <h2>2.Virtualització</h2>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-         ut aliquip ex ea commodo consequat. La configuració de xarxa és
-         <strong>imprescindible</strong> per poder actualitzar el sistema i
-         instal·lar programari nou.</p>
-      <ul>
-        <li>Comprovar l'adreça IP assignada amb <code>ip a</code>.</li>
-        <li>Configurar una IP estàtica si el servei ho requereix.</li>
-        <li>Verificar la connectivitat amb <code>ping</code>.</li>
-      </ul>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-         dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Aquesta captura mostra la configuració de la màquina virtual a VirtualBox. S’ha assignat 6144 MB de memòria RAM, que és la memòria que la màquina virtual pot usar de l’ordinador real, i 3 processadors virtuals. Amb aquests recursos Ubuntu funciona sense afectar el sistema principal.</p>
+        <img src="../img/creacio-maquina-3.png" alt="Exemple de captura de pantalla de l'assistent d'instal·lació">
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="apartat3">
