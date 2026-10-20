@@ -41,8 +41,7 @@
       <h2>1. Màquina virtual, instal·lació i particions</h2>
       <ol type="a">
         <li>
-          <strong>Crear la màquina virtual.</strong>
-          Màquina <code>Windows- Laila Choubani</code> a VirtualBox, amb 4096 MB de RAM i un disc de 50 GB.
+          He creat la màquina <code>Windows- Laila Choubani</code> a VirtualBox, amb 4096 MB de RAM i un disc de 50 GB.
           <br>
           <img src="captures/por-pas/1.1-vm-nom-i-ram.png" alt="Creació de la màquina virtual a VirtualBox">
           <img src="captures/por-pas/1.1b-ram-i-processadors.png" alt="RAM i processadors">
@@ -50,27 +49,26 @@
           <img src="captures/por-pas/1.1d-resum.png" alt="Resum de la configuració">
         </li>
         <li>
-          <strong>Xarxa en NAT.</strong> L'Adaptador 1 està habilitat i en mode NAT.
+          He comprovat que l'Adaptador 1 està habilitat i en mode NAT.
           <br>
-          <img src="captures/por-pas/1.2-adaptador-nat.png" alt="Configuració de xarxa de la màquina virtual en NAT">
+          <img src="captures/por-pas/1.2-adaptador-nat.png" alt="Adaptador 1 en NAT">
         </li>
         <li>
-          <strong>Instal·lació de Windows.</strong> He instal·lat <code>Windows 10 Pro</code> amb la ISO en espanyol.
+          He instal·lat Windows 10 Pro.
           <br>
-          <img src="captures/por-pas/1.3-windows-10-pro.png" alt="Selecció de Windows 10 Pro a l'instal·lador">
+          <img src="captures/por-pas/1.3-windows-10-pro.png" alt="Selecció de Windows 10 Pro">
         </li>
         <li>
-          <strong>Particions.</strong> He creat una partició de 30 GB per a Windows i he deixat 20 GB sense assignar.
+          He creat una partició de 30 GB per a Windows i he deixat 20 GB sense assignar.
           <br>
           <img src="captures/por-pas/1.4-particions-30-20gb.png" alt="Particions de 30 GB i 20 GB sense assignar">
         </li>
         <li>
-          <strong>Volum de dades.</strong> Des de <code>diskmgmt.msc</code> he creat un volum NTFS amb l'etiqueta <code>DADES</code>.
+          Amb <code>diskmgmt.msc</code> he creat el volum NTFS <code>DADES</code>.
           <br>
-          <img src="captures/por-pas/1.5-diskmgmt-dades.png" alt="Assistent de nou volum amb l'etiqueta DADES">
+          <img src="captures/por-pas/1.5-diskmgmt-dades.png" alt="Volum DADES">
         </li>
       </ol>
-      <p class="avis">La guia diu que la unitat de dades és <strong>D:</strong>, però a Windows apareix com <strong>DADES (C:)</strong>. Ho deixo tal com ho mostra el sistema.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
@@ -78,28 +76,28 @@
       <h2>2. Llicències</h2>
       <ol type="a">
         <li>
-          <strong>Estat d'activació.</strong> Configuració → Activació mostra Windows 10 Pro <strong>no activat</strong> (error <code>0xC004F213</code>).
+          He mirat a Configuració → Activació: Windows 10 Pro no està activat (error <code>0xC004F213</code>).
           <br>
-          <img src="captures/por-pas/2.1-activacio.png" alt="Pantalla d'activació de Windows: no activat">
+          <img src="captures/por-pas/2.1-activacio.png" alt="Activació de Windows">
         </li>
         <li>
-          <strong>slmgr /xpr i slmgr /dli.</strong> L'estat és de notificació. El tipus de llicència és <strong>RETAIL</strong> (clau parcial <code>3V66T</code>, motiu <code>0xC004F034</code>).
+          He executat <code>slmgr /xpr</code> i <code>slmgr /dli</code>.
           <br>
-          <img src="captures/por-pas/2.2-slmgr-dli.png" alt="Resultat de slmgr /dli">
           <img src="captures/por-pas/2.2a-slmgr-xpr.png" alt="slmgr /xpr">
+          <img src="captures/por-pas/2.2-slmgr-dli.png" alt="slmgr /dli">
         </li>
         <li>
-          <strong>Preus de Windows 11.</strong> Windows 11 Home costa 145,00 € i Windows 11 Pro 259,00 € a la botiga oficial de Microsoft. A Amazon, els mateixos preus.
+          He buscat el preu de Windows 11 Home i Pro a la botiga de Microsoft i a Amazon.
           <br>
-          <img src="captures/por-pas/2.3-preu-windows-11-pro.png" alt="Preu de Windows 11 Pro a la botiga de Microsoft">
           <img src="captures/por-pas/2.3a-preu-windows-11-home.png" alt="Preu de Windows 11 Home">
+          <img src="captures/por-pas/2.3-preu-windows-11-pro.png" alt="Preu de Windows 11 Pro">
           <img src="captures/por-pas/2.3b-preu-amazon-pro.png" alt="Preu de Windows 11 Pro a Amazon">
           <img src="captures/por-pas/2.3c-preu-amazon-home.png" alt="Preu de Windows 11 Home a Amazon">
         </li>
         <li>
-          <strong>CAL (Client Access License).</strong> A la web de Microsoft, una CAL és la llicència que permet a un usuari o dispositiu accedir als serveis d'un servidor.
+          He buscat què és una CAL a la web de Microsoft.
           <br>
-          <img src="captures/por-pas/2.4-cal.png" alt="Pàgina de Microsoft sobre licències d'accés de client">
+          <img src="captures/por-pas/2.4-cal.png" alt="Pàgina de Microsoft sobre CAL">
         </li>
       </ol>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
@@ -107,28 +105,53 @@
 
     <article class="apartat" id="apartat3">
       <h2>3. Comandes bàsiques</h2>
-      <p>Des del Símbol del sistema (<code>cmd</code>) he fet aquests passos en ordre.</p>
       <ol type="a">
-        <li><strong>Carpeta de pràctica:</strong> <code>cd Desktop</code>, <code>mkdir practica</code>, <code>cd practica</code>.<br>
-          <img src="captures/por-pas/3.1-cd-desktop-mkdir.png" alt="Ordres cd Desktop, mkdir practica i cd practica">
-          <img src="captures/01-cmd-obert.png" alt="Símbol del sistema obert"></li>
-        <li><strong>Fitxer:</strong> <code>echo hola &gt; nota.txt</code> i <code>dir</code>.<br>
-          <img src="captures/por-pas/3.2-echo-hola.png" alt="Creació de nota.txt amb echo"></li>
-        <li><strong>Còpia:</strong> <code>copy nota.txt copia.txt</code>.<br>
-          <img src="captures/por-pas/3.3-copy.png" alt="Còpia de nota.txt a copia.txt"></li>
-        <li><strong>Carpeta i moviment:</strong> <code>mkdir arxiu</code> i <code>move copia.txt arxiu</code>.<br>
-          <img src="captures/por-pas/3.4-mkdir-move.png" alt="Carpeta arxiu i moviment de copia.txt"></li>
-        <li><strong>Renombrar:</strong> <code>ren nota.txt notes.txt</code> i <code>ren arxiu backup</code>.<br>
-          <img src="captures/por-pas/3.5-ren.png" alt="Renombrar fitxer i carpeta"></li>
-        <li><strong>Entrar a la carpeta:</strong> <code>cd backup</code>, <code>dir</code> i <code>cd ..</code>. El primer intent ha fallat perquè la carpeta havia quedat com <code>buckup</code>; l'he corregit amb <code>ren buckup backup</code>.<br>
-          <img src="captures/por-pas/3.6-cd-backup.png" alt="Entrada a la carpeta backup">
+        <li>
+          Al Símbol del sistema: <code>cd Desktop</code>, <code>mkdir practica</code>, <code>cd practica</code>.
+          <br>
+          <img src="captures/01-cmd-obert.png" alt="Símbol del sistema obert">
+          <img src="captures/por-pas/3.1-cd-desktop-mkdir.png" alt="cd Desktop, mkdir practica i cd practica">
+        </li>
+        <li>
+          <code>echo hola &gt; nota.txt</code> i <code>dir</code>.
+          <br>
+          <img src="captures/por-pas/3.2-echo-hola.png" alt="echo hola i dir">
+        </li>
+        <li>
+          <code>copy nota.txt copia.txt</code> i <code>dir</code>.
+          <br>
+          <img src="captures/por-pas/3.3-copy.png" alt="copy i dir">
+        </li>
+        <li>
+          <code>mkdir arxiu</code> i <code>move copia.txt arxiu</code>.
+          <br>
+          <img src="captures/por-pas/3.4-mkdir-move.png" alt="mkdir arxiu i move">
+        </li>
+        <li>
+          <code>ren nota.txt notes.txt</code> i <code>ren arxiu backup</code>.
+          <br>
+          <img src="captures/por-pas/3.5-ren.png" alt="ren de fitxer i carpeta">
+        </li>
+        <li>
+          <code>cd backup</code>: al principi no em deixava perquè la carpeta es deia <code>buckup</code>. Ho he canviat amb <code>ren buckup backup</code> i després he fet <code>cd backup</code>, <code>dir</code> i <code>cd ..</code>.
+          <br>
           <img src="captures/07-error-cd-backup.png" alt="Error de cd backup">
-          <img src="captures/08-dir-x-buckup.png" alt="dir /x amb el nom buckup"></li>
-        <li><strong>Estructura:</strong> <code>tree /f</code>.<br>
-          <img src="captures/por-pas/3.7-tree.png" alt="Estructura de carpetes amb tree /f"></li>
-        <li><strong>Esborrar:</strong> <code>del notes.txt</code> i <code>dir</code>.<br>
-          <img src="captures/por-pas/3.8-del-notes.png" alt="Esborrat de notes.txt"></li>
-        <li><strong>Netejar:</strong> <code>cls</code>.</li>
+          <img src="captures/08-dir-x-buckup.png" alt="dir /x amb buckup">
+          <img src="captures/por-pas/3.6-cd-backup.png" alt="cd backup">
+        </li>
+        <li>
+          <code>tree /f</code>.
+          <br>
+          <img src="captures/por-pas/3.7-tree.png" alt="tree /f">
+        </li>
+        <li>
+          <code>del notes.txt</code> i <code>dir</code>.
+          <br>
+          <img src="captures/por-pas/3.8-del-notes.png" alt="del notes.txt">
+        </li>
+        <li>
+          <code>cls</code>.
+        </li>
       </ol>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
@@ -137,9 +160,8 @@
       <h2>4. Aplicacions i punts de restauració</h2>
       <ol type="a">
         <li>
-          <strong>Punt de restauració.</strong> He activat la protecció del sistema a <code>DADES (C:)</code> i he creat el punt <code>Abans de Chrome</code>. El primer intent ha fallat per falta d'espai (<code>0x8004231F</code> i <code>0x80070070</code>). Amb el límit d'ús a 1,40 GB s'ha creat correctament.
+          He activat la protecció del sistema a <code>DADES (C:)</code> i he creat el punt <code>Abans de Chrome</code>. Al principi em donava error d'espai, fins que he pujat el límit d'ús a 1,40 GB.
           <br>
-          <img src="captures/por-pas/4.1-punt-restauracio-creat.png" alt="Missatge: el punt de restauració s'ha creat correctament">
           <img src="captures/12-proteccio-sistema.png" alt="Protecció del sistema">
           <img src="captures/13-pestanya-proteccio.png" alt="Pestanya Protecció del sistema">
           <img src="captures/14-descripcio-punt.png" alt="Descripció del punt">
@@ -150,47 +172,49 @@
           <img src="captures/19-punt-creat-ok.png" alt="Punt creat correctament">
         </li>
         <li>
-          <strong>Chrome: no instal·lat.</strong> He descarregat <code>ChromeSetup.exe</code> de la web oficial de Google i he acceptat el Control de comptes d'usuari (editor: Google LLC). La instal·lació ha fallat per falta d'espai (<em>No hi ha prou espai en disc</em>). Abans, l'emmagatzematge mostrava 67,4 MB lliures de 19,9 GB.
+          He descarregat Chrome de la web de Google i he intentat instal·lar-lo. No s'ha instal·lat perquè no hi ha prou espai.
           <br>
-          <img src="captures/por-pas/4.2-emmagatzematge-chrome.png" alt="Emmagatzematge de DADES (C:) amb 67,4 MB lliures">
+          <img src="captures/por-pas/4.2-emmagatzematge-chrome.png" alt="Emmagatzematge de DADES (C:)">
           <img src="captures/20-descarrega-chrome.png" alt="Descàrrega de ChromeSetup.exe">
-          <img src="captures/21-uac-google.png" alt="Control de comptes d'usuari (Google LLC)">
-          <img src="captures/22-chrome-sense-espai.png" alt="Chrome: no hi ha prou espai">
-          <img src="captures/23-liberador-espai.png" alt="Liberador d'espai: 25 MB">
+          <img src="captures/21-uac-google.png" alt="Control de comptes d'usuari">
+          <img src="captures/22-chrome-sense-espai.png" alt="No hi ha prou espai en disc">
+          <img src="captures/23-liberador-espai.png" alt="Liberador d'espai">
         </li>
         <li>
-          <strong>Restaurar sistema i Cerca programes afectats.</strong> No s'han pogut fer, perquè Chrome no s'ha instal·lat.
+          No he pogut fer Restaurar sistema, perquè Chrome no s'ha instal·lat.
         </li>
       </ol>
-      <p class="avis"><strong>Causa:</strong> la unitat virtual era massa petita per a les instantànies de restauració i per a la instal·lació. La solució seria ampliar el disc virtual des de VirtualBox i després estendre la unitat a Gestió de discos.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="apartat5">
       <h2>5. Xarxa</h2>
-      <p>He fet els pings amb cada configuració de l'adaptador. Abans de començar, he fet una instantània de la màquina virtual (<code>Abans de xarxa</code>).</p>
       <ol type="a">
         <li>
-          <strong>NAT.</strong> <code>ipconfig</code> mostra <code>10.0.2.15</code>. <code>ping google.com</code> i <code>ping 8.8.8.8</code> funcionen (0% de pèrdua).<br>
-          <img src="captures/por-pas/5.1-ipconfig-nat.png" alt="ipconfig amb adaptador NAT">
+          Amb l'adaptador en NAT: <code>ipconfig</code>, <code>ping google.com</code> i <code>ping 8.8.8.8</code>. Funcionen.
+          <br>
+          <img src="captures/por-pas/5.1-ipconfig-nat.png" alt="ipconfig amb NAT">
           <img src="captures/por-pas/5.1b-ping-google-nat.png" alt="ping google.com amb NAT">
           <img src="captures/por-pas/5.1c-ping-8888-nat.png" alt="ping 8.8.8.8 amb NAT">
         </li>
         <li>
-          <strong>Cable desconnectat.</strong> <code>ping google.com</code> no troba el host. <code>ping 8.8.8.8</code> respon "Host de destino inaccesible" des de <code>10.0.2.15</code>.<br>
+          He desmarcat Connecta el cable i he repetit els pings. No funcionen.
+          <br>
+          <img src="captures/por-pas/5.2a-xarxa-nat-cable-desconnectat.png" alt="Cable desconnectat">
           <img src="captures/por-pas/5.2-ping-cable-desconnectat.png" alt="Pings amb el cable desconnectat">
-          <img src="captures/por-pas/5.2a-xarxa-nat-cable-desconnectat.png" alt="Adaptador NAT amb cable desconnectat">
         </li>
         <li>
-          <strong>Adaptador pont.</strong> <code>ipconfig</code> mostra <code>192.168.203.195</code>. Els dos pings funcionen (0% de pèrdua).<br>
-          <img src="captures/por-pas/5.3-ipconfig-pont.png" alt="ipconfig amb adaptador pont">
+          He connectat el cable, he canviat l'adaptador a Adaptador pont i he repetit <code>ipconfig</code> i els pings. Ara funcionen.
+          <br>
           <img src="captures/por-pas/5.3a-adaptador-pont.png" alt="Adaptador pont">
+          <img src="captures/por-pas/5.3-ipconfig-pont.png" alt="ipconfig amb adaptador pont">
           <img src="captures/por-pas/5.3b-ping-google-pont.png" alt="ping google.com amb adaptador pont">
           <img src="captures/por-pas/5.3c-ping-8888-pont.png" alt="ping 8.8.8.8 amb adaptador pont">
         </li>
         <li>
-          <strong>DNS manual 1.2.3.4.</strong> <code>ping google.com</code> no resol el nom. <code>ping 8.8.8.8</code> funciona. Després he tornat el DNS a automàtic i <code>google.com</code> resol de nou (142.251.142.142).<br>
-          <img src="captures/por-pas/5.4-dns-manual-1234.png" alt="DNS preferit posat a 1.2.3.4">
+          He posat el DNS manual <code>1.2.3.4</code> i he repetit els pings. <code>google.com</code> no funciona, però <code>8.8.8.8</code> sí. Després he tornat el DNS a automàtic i <code>google.com</code> funciona.
+          <br>
+          <img src="captures/por-pas/5.4-dns-manual-1234.png" alt="DNS manual 1.2.3.4">
           <img src="captures/por-pas/5.4b-ping-dns-manual.png" alt="Pings amb DNS 1.2.3.4">
           <img src="captures/por-pas/5.4c-dns-automatic.png" alt="DNS automàtic">
           <img src="captures/por-pas/5.4d-ping-google-final.png" alt="ping google.com final">
