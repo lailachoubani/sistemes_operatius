@@ -86,3 +86,17 @@ Adaptador de la VM canviat segons el pas. Abans de començar, s'ha fet una insta
 | 4 (final) | DNS tornat a **automàtic** | `ping google.com` resol de nou (142.251.142.142) |
 
 **Conclusió:** la connectivitat IP (`8.8.8.8`) no depèn del DNS. Quan el DNS és incorrecte, `google.com` no es resol encara que la xarxa funcioni.
+
+---
+
+## Captures completes (pàgines del PDF)
+
+Totes les pàgines del PDF de captures estan també com a PNG a [`captures/pdf-pagines/`](captures/pdf-pagines/), en ordre:
+
+| Part | Pàgines | Contingut |
+|---|---|---|
+| 1. Màquina virtual | [1](captures/pdf-pagines/pagina-01.png)–[5](captures/pdf-pagines/pagina-05.png) | Creació de la VM, resum, adaptador NAT, instal·lació de Windows 10 Pro, particions de 30 GB i 20 GB, `DADES` a `diskmgmt.msc` |
+| 2. Llicències | [6](captures/pdf-pagines/pagina-06.png)–[9](captures/pdf-pagines/pagina-09.png) | Activació de Windows, `slmgr /xpr` i `slmgr /dli`, preus de Windows 11 a Microsoft i Amazon, CAL |
+| 3. Comandes bàsiques | [9](captures/pdf-pagines/pagina-09.png)–[12](captures/pdf-pagines/pagina-12.png) | Totes les ordres de la secció 3 |
+| 4. Aplicacions i restauració | [12](captures/pdf-pagines/pagina-12.png)–[13](captures/pdf-pagines/pagina-13.png) | Punt de restauració creat, emmagatzematge amb 67,4 MB lliures |
+| 5. Xarxa | [13](captures/pdf-pagines/pagina-13.png)–[18](captures/pdf-pagines/pagina-18.png) | `ipconfig` i pings amb NAT, cable desconnectat, adaptador pont i DNS 1.2.3.4 |
