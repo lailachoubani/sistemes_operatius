@@ -17,7 +17,6 @@ Fitxers d'aquesta carpeta:
 - **Particions:** partició de 30 GB per a Windows (`Reservado para el sistema` + `Unidad 0 Partición 1`) i 20 GB sense assignar.
 - **Volum de dades:** des de `diskmgmt.msc`, creat sobre l'espai lliure com a NTFS amb l'etiqueta `DADES`.
 
-**Nota:** la guia diu que la unitat de dades és **D:**, però a Windows apareix com **DADES (C:)** (captures de la secció 4). Ho deixo tal com ho mostra el sistema.
 
 ---
 
