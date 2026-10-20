@@ -85,7 +85,6 @@ Adaptador de la VM canviat segons el pas. Abans de començar, s'ha fet una insta
 | 4 | Adaptador pont amb **DNS manual `1.2.3.4`** | `ping google.com`: no troba el host (error de resolució de noms). `ping 8.8.8.8` funciona (0% pèrdua) |
 | 4 (final) | DNS tornat a **automàtic** | `ping google.com` resol de nou (142.251.142.142) |
 
-**Conclusió:** la connectivitat IP (`8.8.8.8`) no depèn del DNS. Quan el DNS és incorrecte, `google.com` no es resol encara que la xarxa funcioni.
 
 ---
 
