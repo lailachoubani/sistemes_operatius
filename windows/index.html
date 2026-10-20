@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint 1 Windows · Instal·lació i configuració de Windows</title>
+<link rel="stylesheet" href="../css/estils.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav class="hero-nav">
+    <a href="../index.html">Portada</a>
+    <a href="../sprints.html">Índex de sprints</a>
+    <a href="https://github.com/lailachoubani/sistemes_operatius" target="_blank" rel="noopener">Codi a GitHub ↗</a>
+  </nav>
+  <div class="hero-titol">
+    <p class="miguetes"><a href="../index.html">Portada</a> / Projecte Windows / Sprint 1</p>
+    <h1>Sprint 1 · Instal·lació i configuració de Windows</h1>
+    <p class="subtitol">Màquina virtual, llicències, comandes, punts de restauració i xarxa</p>
+  </div>
+</header>
+
+<main class="contenidor">
+  <section class="panell">
+    <a id="index-apartats"></a>
+    <table class="taula-apartats">
+      <thead>
+        <tr><th>#</th><th>Apartat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><a href="#apartat1">Màquina virtual, instal·lació i particions</a></td></tr>
+        <tr><td>2</td><td><a href="#apartat2">Llicències</a></td></tr>
+        <tr><td>3</td><td><a href="#apartat3">Comandes bàsiques</a></td></tr>
+        <tr><td>4</td><td><a href="#apartat4">Aplicacions i punts de restauració</a></td></tr>
+        <tr><td>5</td><td><a href="#apartat5">Xarxa</a></td></tr>
+      </tbody>
+    </table>
+
+    <article class="apartat" id="apartat1">
+      <h2>1. Màquina virtual, instal·lació i particions</h2>
+      <ol type="a">
+        <li>
+          <strong>Crear la màquina virtual.</strong>
+          Màquina <code>Windows- Laila Choubani</code> a VirtualBox, amb 4096 MB de RAM i un disc de 50 GB.
+          <br>
+          <img src="captures/por-pas/1.1-vm-nom-i-ram.png" alt="Creació de la màquina virtual a VirtualBox">
+        </li>
+        <li>
+          <strong>Xarxa en NAT.</strong> L'Adaptador 1 està habilitat i en mode NAT.
+          <br>
+          <img src="captures/por-pas/1.2-adaptador-nat.png" alt="Configuració de xarxa de la màquina virtual en NAT">
+        </li>
+        <li>
+          <strong>Instal·lació de Windows.</strong> He instal·lat <code>Windows 10 Pro</code> amb la ISO en espanyol.
+          <br>
+          <img src="captures/por-pas/1.3-windows-10-pro.png" alt="Selecció de Windows 10 Pro a l'instal·lador">
+        </li>
+        <li>
+          <strong>Particions.</strong> He creat una partició de 30 GB per a Windows i he deixat 20 GB sense assignar.
+          <br>
+          <img src="captures/por-pas/1.4-particions-30-20gb.png" alt="Particions de 30 GB i 20 GB sense assignar">
+        </li>
+        <li>
+          <strong>Volum de dades.</strong> Des de <code>diskmgmt.msc</code> he creat un volum NTFS amb l'etiqueta <code>DADES</code>.
+          <br>
+          <img src="captures/por-pas/1.5-diskmgmt-dades.png" alt="Assistent de nou volum amb l'etiqueta DADES">
+        </li>
+      </ol>
+      <p class="avis">La guia diu que la unitat de dades és <strong>D:</strong>, però a Windows apareix com <strong>DADES (C:)</strong>. Ho deixo tal com ho mostra el sistema.</p>
+      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
+    </article>
+
+    <article class="apartat" id="apartat2">
+      <h2>2. Llicències</h2>
+      <ol type="a">
+        <li>
+          <strong>Estat d'activació.</strong> Configuració → Activació mostra Windows 10 Pro <strong>no activat</strong> (error <code>0xC004F213</code>).
+          <br>
+          <img src="captures/por-pas/2.1-activacio.png" alt="Pantalla d'activació de Windows: no activat">
+        </li>
+        <li>
+          <strong>slmgr /xpr i slmgr /dli.</strong> L'estat és de notificació. El tipus de llicència és <strong>RETAIL</strong> (clau parcial <code>3V66T</code>, motiu <code>0xC004F034</code>).
+          <br>
+          <img src="captures/por-pas/2.2-slmgr-dli.png" alt="Resultat de slmgr /dli">
+        </li>
+        <li>
+          <strong>Preus de Windows 11.</strong> Windows 11 Home costa 145,00 € i Windows 11 Pro 259,00 € a la botiga oficial de Microsoft. A Amazon, els mateixos preus.
+          <br>
+          <img src="captures/por-pas/2.3-preu-windows-11-pro.png" alt="Preu de Windows 11 Pro a la botiga de Microsoft">
+        </li>
+        <li>
+          <strong>CAL (Client Access License).</strong> A la web de Microsoft, una CAL és la llicència que permet a un usuari o dispositiu accedir als serveis d'un servidor.
+          <br>
+          <img src="captures/por-pas/2.4-cal.png" alt="Pàgina de Microsoft sobre licències d'accés de client">
+        </li>
+      </ol>
+      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
+    </article>
+
+    <article class="apartat" id="apartat3">
+      <h2>3. Comandes bàsiques</h2>
+      <p>Des del Símbol del sistema (<code>cmd</code>) he fet aquests passos en ordre.</p>
+      <ol type="a">
+        <li><strong>Carpeta de pràctica:</strong> <code>cd Desktop</code>, <code>mkdir practica</code>, <code>cd practica</code>.<br>
+          <img src="captures/por-pas/3.1-cd-desktop-mkdir.png" alt="Ordres cd Desktop, mkdir practica i cd practica"></li>
+        <li><strong>Fitxer:</strong> <code>echo hola &gt; nota.txt</code> i <code>dir</code>.<br>
+          <img src="captures/por-pas/3.2-echo-hola.png" alt="Creació de nota.txt amb echo"></li>
+        <li><strong>Còpia:</strong> <code>copy nota.txt copia.txt</code>.<br>
+          <img src="captures/por-pas/3.3-copy.png" alt="Còpia de nota.txt a copia.txt"></li>
+        <li><strong>Carpeta i moviment:</strong> <code>mkdir arxiu</code> i <code>move copia.txt arxiu</code>.<br>
+          <img src="captures/por-pas/3.4-mkdir-move.png" alt="Carpeta arxiu i moviment de copia.txt"></li>
+        <li><strong>Renombrar:</strong> <code>ren nota.txt notes.txt</code> i <code>ren arxiu backup</code>.<br>
+          <img src="captures/por-pas/3.5-ren.png" alt="Renombrar fitxer i carpeta"></li>
+        <li><strong>Entrar a la carpeta:</strong> <code>cd backup</code>, <code>dir</code> i <code>cd ..</code>. El primer intent ha fallat perquè la carpeta havia quedat com <code>buckup</code>; l'he corregit amb <code>ren buckup backup</code>.<br>
+          <img src="captures/por-pas/3.6-cd-backup.png" alt="Entrada a la carpeta backup"></li>
+        <li><strong>Estructura:</strong> <code>tree /f</code>.<br>
+          <img src="captures/por-pas/3.7-tree.png" alt="Estructura de carpetes amb tree /f"></li>
+        <li><strong>Esborrar:</strong> <code>del notes.txt</code> i <code>dir</code>.<br>
+          <img src="captures/por-pas/3.8-del-notes.png" alt="Esborrat de notes.txt"></li>
+        <li><strong>Netejar:</strong> <code>cls</code>.</li>
+      </ol>
+      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
+    </article>
+
+    <article class="apartat" id="apartat4">
+      <h2>4. Aplicacions i punts de restauració</h2>
+      <ol type="a">
+        <li>
+          <strong>Punt de restauració.</strong> He activat la protecció del sistema a <code>DADES (C:)</code> i he creat el punt <code>Abans de Chrome</code>. El primer intent ha fallat per falta d'espai (<code>0x8004231F</code> i <code>0x80070070</code>). Amb el límit d'ús a 1,40 GB s'ha creat correctament.
+          <br>
+          <img src="captures/por-pas/4.1-punt-restauracio-creat.png" alt="Missatge: el punt de restauració s'ha creat correctament">
+        </li>
+        <li>
+          <strong>Chrome: no instal·lat.</strong> He descarregat <code>ChromeSetup.exe</code> de la web oficial de Google i he acceptat el Control de comptes d'usuari (editor: Google LLC). La instal·lació ha fallat per falta d'espai (<em>No hi ha prou espai en disc</em>). Abans, l'emmagatzematge mostrava 67,4 MB lliures de 19,9 GB.
+          <br>
+          <img src="captures/por-pas/4.2-emmagatzematge-chrome.png" alt="Emmagatzematge de DADES (C:) amb 67,4 MB lliures">
+        </li>
+        <li>
+          <strong>Restaurar sistema i Cerca programes afectats.</strong> No s'han pogut fer, perquè Chrome no s'ha instal·lat.
+        </li>
+      </ol>
+      <p class="avis"><strong>Causa:</strong> la unitat virtual era massa petita per a les instantànies de restauració i per a la instal·lació. La solució seria ampliar el disc virtual des de VirtualBox i després estendre la unitat a Gestió de discos.</p>
+      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
+    </article>
+
+    <article class="apartat" id="apartat5">
+      <h2>5. Xarxa</h2>
+      <p>He fet els pings amb cada configuració de l'adaptador. Abans de començar, he fet una instantània de la màquina virtual (<code>Abans de xarxa</code>).</p>
+      <ol type="a">
+        <li>
+          <strong>NAT.</strong> <code>ipconfig</code> mostra <code>10.0.2.15</code>. <code>ping google.com</code> i <code>ping 8.8.8.8</code> funcionen (0% de pèrdua).<br>
+          <img src="captures/por-pas/5.1-ipconfig-nat.png" alt="ipconfig amb adaptador NAT">
+        </li>
+        <li>
+          <strong>Cable desconnectat.</strong> <code>ping google.com</code> no troba el host. <code>ping 8.8.8.8</code> respon "Host de destino inaccesible" des de <code>10.0.2.15</code>.<br>
+          <img src="captures/por-pas/5.2-ping-cable-desconnectat.png" alt="Pings amb el cable desconnectat">
+        </li>
+        <li>
+          <strong>Adaptador pont.</strong> <code>ipconfig</code> mostra <code>192.168.203.195</code>. Els dos pings funcionen (0% de pèrdua).<br>
+          <img src="captures/por-pas/5.3-ipconfig-pont.png" alt="ipconfig amb adaptador pont">
+        </li>
+        <li>
+          <strong>DNS manual 1.2.3.4.</strong> <code>ping google.com</code> no resol el nom. <code>ping 8.8.8.8</code> funciona. Després he tornat el DNS a automàtic i <code>google.com</code> resol de nou (142.251.142.142).<br>
+          <img src="captures/por-pas/5.4-dns-manual-1234.png" alt="DNS preferit posat a 1.2.3.4">
+        </li>
+      </ol>
+      <p class="avis"><strong>Conclusió:</strong> la connectivitat IP (<code>8.8.8.8</code>) no depèn del DNS. Quan el DNS és incorrecte, <code>google.com</code> no es resol encara que la xarxa funcioni.</p>
+      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
+    </article>
+
+  </section>
+</main>
+
+<footer class="peu">
+  <p class="peu-llicencia">
+    This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</a>
+  </p>
+  <p class="autoria">Autor/a: <strong>Laila Choubani</strong> · Pràctica 0 · Sistemes Operatius (ISOPJ1)</p>
+</footer>
+
+</body>
+</html>
