@@ -89,14 +89,33 @@ Adaptador de la VM canviat segons el pas. Abans de començar, s'ha fet una insta
 
 ---
 
-## Captures completes (pàgines del PDF)
+## Captures per pas (segons la guia)
 
-Totes les pàgines del PDF de captures estan també com a PNG a [`captures/pdf-pagines/`](captures/pdf-pagines/), en ordre:
+Les captures de cada pas són a [`captures/por-pas/`](captures/por-pas/), amb el número de part i de pas. Les captures sueltes de la secció 3 i 4 també hi són a [`captures/`](captures/). Les captures addicionals de la guia són a [`captures/extra-del-pdf/`](captures/extra-del-pdf/).
 
-| Part | Pàgines | Contingut |
-|---|---|---|
-| 1. Màquina virtual | [1](captures/pdf-pagines/pagina-01.png)–[5](captures/pdf-pagines/pagina-05.png) | Creació de la VM, resum, adaptador NAT, instal·lació de Windows 10 Pro, particions de 30 GB i 20 GB, `DADES` a `diskmgmt.msc` |
-| 2. Llicències | [6](captures/pdf-pagines/pagina-06.png)–[9](captures/pdf-pagines/pagina-09.png) | Activació de Windows, `slmgr /xpr` i `slmgr /dli`, preus de Windows 11 a Microsoft i Amazon, CAL |
-| 3. Comandes bàsiques | [9](captures/pdf-pagines/pagina-09.png)–[12](captures/pdf-pagines/pagina-12.png) | Totes les ordres de la secció 3 |
-| 4. Aplicacions i restauració | [12](captures/pdf-pagines/pagina-12.png)–[13](captures/pdf-pagines/pagina-13.png) | Punt de restauració creat, emmagatzematge amb 67,4 MB lliures |
-| 5. Xarxa | [13](captures/pdf-pagines/pagina-13.png)–[18](captures/pdf-pagines/pagina-18.png) | `ipconfig` i pings amb NAT, cable desconnectat, adaptador pont i DNS 1.2.3.4 |
+| Pas | Captura principal |
+|---|---|
+| 1.1 Crear la màquina | [1.1-vm-nom-i-ram.png](captures/por-pas/1.1-vm-nom-i-ram.png) |
+| 1.2 Adaptador NAT | [1.2-adaptador-nat.png](captures/por-pas/1.2-adaptador-nat.png) |
+| 1.4 Particions | [1.4-particions-30-20gb.png](captures/por-pas/1.4-particions-30-20gb.png) |
+| 1.5 Volum DADES | [1.5-diskmgmt-dades.png](captures/por-pas/1.5-diskmgmt-dades.png) |
+| 2.1 Activació | [2.1-activacio.png](captures/por-pas/2.1-activacio.png) |
+| 2.2 slmgr /xpr i /dli | [2.2-slmgr-dli.png](captures/por-pas/2.2-slmgr-dli.png) |
+| 2.3 Preu Windows 11 | [2.3-preu-windows-11-pro.png](captures/por-pas/2.3-preu-windows-11-pro.png) |
+| 2.4 CAL | [2.4-cal.png](captures/por-pas/2.4-cal.png) |
+| 3.1 cd Desktop, mkdir practica | [3.1-cd-desktop-mkdir.png](captures/por-pas/3.1-cd-desktop-mkdir.png) |
+| 3.2 echo hola > nota.txt | [3.2-echo-hola.png](captures/por-pas/3.2-echo-hola.png) |
+| 3.3 copy | [3.3-copy.png](captures/por-pas/3.3-copy.png) |
+| 3.4 mkdir arxiu, move | [3.4-mkdir-move.png](captures/por-pas/3.4-mkdir-move.png) |
+| 3.5 ren | [3.5-ren.png](captures/por-pas/3.5-ren.png) |
+| 3.6 cd backup | [3.6-cd-backup.png](captures/por-pas/3.6-cd-backup.png) |
+| 3.7 tree /f | [3.7-tree.png](captures/por-pas/3.7-tree.png) |
+| 3.8 del notes.txt | [3.8-del-notes.png](captures/por-pas/3.8-del-notes.png) |
+| 4.1 Punt de restauració creat | [4.1-punt-restauracio-creat.png](captures/por-pas/4.1-punt-restauracio-creat.png) |
+| 4.2 Emmagatzematge (Chrome no s'instal·la) | [4.2-emmagatzematge-chrome.png](captures/por-pas/4.2-emmagatzematge-chrome.png) |
+| 5.1 NAT: ipconfig | [5.1-ipconfig-nat.png](captures/por-pas/5.1-ipconfig-nat.png) |
+| 5.2 Cable desconnectat: ping | [5.2-ping-cable-desconnectat.png](captures/por-pas/5.2-ping-cable-desconnectat.png) |
+| 5.3 Adaptador pont: ipconfig | [5.3-ipconfig-pont.png](captures/por-pas/5.3-ipconfig-pont.png) |
+| 5.4 DNS 1.2.3.4 | [5.4-dns-manual-1234.png](captures/por-pas/5.4-dns-manual-1234.png) |
+
+**Passos sense captura a la guia:** 1.3, 4.3 i 4.4 (Restaurar sistema i Cerca programes afectats no s'han pogut fer, perquè Chrome no s'ha instal·lat). El pas 9 de la secció 3 (`cls`) tampoc té captura.
