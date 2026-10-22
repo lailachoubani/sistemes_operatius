@@ -4,14 +4,14 @@
    <link rel="stylesheet" href="css/estils.css">      (des de l'arrel) */
 
 :root {
-  --mari: #c2185b;
-  --teal: #ad1457;
-  --ambre: #f06292;
-  --tinta: #3d1a2b;
-  --tinta-suau: #7a5566;
-  --fons: #fff0f6;
+  --mari: #1e6091;
+  --teal: #1f5f7a;
+  --ambre: #7fd1e6;
+  --tinta: #0f2a3d;
+  --tinta-suau: #4f6b7a;
+  --fons: #eef7fb;
   --blanc: #ffffff;
-  --vora: #f3c4d8;
+  --vora: #c5e3ef;
   --radi: 12px;
 }
 
@@ -90,7 +90,7 @@ main { padding-bottom: 50px; }
 .panell {
   background: var(--blanc);
   border-radius: var(--radi);
-  box-shadow: 0 12px 32px rgba(61, 26, 43, 0.16);
+  box-shadow: 0 12px 32px rgba(15, 42, 61, 0.16);
   margin-top: -42px;
   padding: 32px 34px;
   position: relative;
@@ -147,7 +147,7 @@ main { padding-bottom: 50px; }
   transition: box-shadow 0.15s, transform 0.15s;
 }
 .targeta:hover {
-  box-shadow: 0 4px 14px rgba(173, 20, 87, 0.18);
+  box-shadow: 0 4px 14px rgba(31, 95, 122, 0.18);
   transform: translateY(-2px);
   text-decoration: none;
 }
