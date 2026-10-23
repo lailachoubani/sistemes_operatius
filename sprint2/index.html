@@ -70,6 +70,46 @@
 
     <article class="apartat" id="tipus-formateig">
       <h2>1.5 Tipus de formateig</h2>
+<h3>Pas 0. Preparar-ho tot</h3>
+<p><strong>0.1 Instal·lar photorec</strong></p><pre><code>sudo apt install testdisk</code></pre><figure><img src="captures/tipus-formateig/01-captura-0-1-testdisk.png" alt="Captura 0.1: instal·lació de testdisk"><figcaption>Captura 0.1: instal·lació de testdisk</figcaption></figure><pre><code>which photorec</code></pre><figure><img src="captures/tipus-formateig/02-captura-0-1-which-photorec.png" alt="Captura 0.1: which photorec i comprovació de l&#x27;usuari"><figcaption>Captura 0.1: which photorec i comprovació de l&#x27;usuari</figcaption></figure><p>Resultat esperat: <code>/usr/bin/photorec</code></p>
+<p><strong>0.2 Crear la carpeta de la pràctica</strong></p><pre><code>mkdir -p ~/practica
+cd ~/practica
+pwd</code></pre><figure><img src="captures/tipus-formateig/03-captura-0-2-carpeta.png" alt="Captura 0.2: carpeta ~/practica creada i notes.txt dins"><figcaption>Captura 0.2: carpeta ~/practica creada i notes.txt dins</figcaption></figure><p>Resultat esperat: <code>/home/alumnat/practica</code></p>
+<p><strong>0.3 Posar-hi els fitxers de prova</strong></p><pre><code>echo &quot;El meu secret és que m&#x27;encanta la pizza amb pinya&quot; &gt; notes.txt
+ls -l</code></pre><figure><img src="captures/tipus-formateig/04-captura-0-3-fitxers.png" alt="Captura 0.3: foto.jpg, apunts.pdf i notes.txt a la carpeta"><figcaption>Captura 0.3: foto.jpg, apunts.pdf i notes.txt a la carpeta</figcaption></figure>
+<h3>Part 1. Crear el disc virtual</h3>
+<p><strong>1.1 Crear el fitxer</strong></p><pre><code>dd if=/dev/zero of=disc.img bs=1M count=200 status=progress</code></pre>
+<p><strong>1.2 Comprovar que existeix</strong></p><pre><code>ls -lh disc.img</code></pre><figure><img src="captures/tipus-formateig/05-captura-1-2-disc-img.png" alt="Captura 1.2: disc.img de 200M creat"><figcaption>Captura 1.2: disc.img de 200M creat</figcaption></figure>
+<h3>Part 2. Formatar el disc i desar-hi fitxers</h3>
+<p><strong>2.1 Donar format al disc</strong></p><pre><code>mkfs.ext4 disc.img</code></pre>
+<p><strong>2.2 Muntar el disc</strong></p><pre><code>sudo mkdir -p /mnt/prova
+sudo mount -o loop disc.img /mnt/prova</code></pre>
+<p><strong>2.3 Copiar-hi els fitxers</strong></p><pre><code>sudo cp foto.jpg apunts.pdf notes.txt /mnt/prova/
+ls -l /mnt/prova</code></pre><figure><img src="captures/tipus-formateig/06-captura-2-3-copia.png" alt="Captura 2.3: fitxers copiats dins de /mnt/prova"><figcaption>Captura 2.3: fitxers copiats dins de /mnt/prova</figcaption></figure>
+<p><strong>2.4 Desar els hashes dels originals</strong></p><pre><code>sha256sum foto.jpg apunts.pdf notes.txt &gt; originals.sha
+cat originals.sha</code></pre><figure><img src="captures/tipus-formateig/07-captura-2-4-hashes.png" alt="Captura 2.4: hashes dels tres fitxers originals"><figcaption>Captura 2.4: hashes dels tres fitxers originals</figcaption></figure>
+<p><strong>2.5 Desmuntar el disc</strong></p><pre><code>sudo umount /mnt/prova</code></pre><figure><img src="captures/tipus-formateig/08-captura-2-5-desmuntat.png" alt="Captura 2.5: disc desmuntat sense missatges"><figcaption>Captura 2.5: disc desmuntat sense missatges</figcaption></figure>
+<h3>Part 3. Formateig d'alt nivell</h3>
+<p><strong>3.1 Tornar a formatar (sense esborrar el contingut)</strong></p><pre><code>mkfs.ext4 -E nodiscard disc.img</code></pre><p>Escriu <code>y</code> quan <code>mkfs</code> demani confirmació.</p>
+<p><strong>3.2 Comprovar què hi ha al disc</strong></p><pre><code>sudo mount -o loop disc.img /mnt/prova
+ls -l /mnt/prova
+sudo umount /mnt/prova</code></pre><figure><img src="captures/tipus-formateig/09-captura-3-2-lost-found.png" alt="Captura 3.2: només lost+found després del formateig"><figcaption>Captura 3.2: només lost+found després del formateig</figcaption></figure><p>Resultat esperat: només <code>lost+found</code>.</p>
+<h3>Part 4. Recuperar els fitxers</h3>
+<p><strong>4.1 Executar photorec</strong></p><pre><code>photorec /d recup /cmd disc.img
+options,fileopt,everything,enable,search</code></pre>
+<p><strong>4.2 Veure què ha trobat</strong></p><pre><code>ls recup.1</code></pre><figure><img src="captures/tipus-formateig/10-captura-4-2-recuperats.png" alt="Captura 4.2: fitxers recuperats per photorec"><figcaption>Captura 4.2: fitxers recuperats per photorec</figcaption></figure><figure><img src="captures/tipus-formateig/11-captura-4-2-mides.png" alt="Captura 4.2: mides dels fitxers recuperats"><figcaption>Captura 4.2: mides dels fitxers recuperats</figcaption></figure>
+<p><strong>4.3 Comprovar que són idèntics</strong></p><pre><code>sha256sum recup.1/*
+cat originals.sha</code></pre><figure><img src="captures/tipus-formateig/12-captura-4-3-hashes.png" alt="Captura 4.3: hashes recuperats i originals iguals"><figcaption>Captura 4.3: hashes recuperats i originals iguals</figcaption></figure>
+<p><strong>4.4 Buscar el text de notes.txt</strong></p><pre><code>strings -e S disc.img | grep pizza</code></pre><figure><img src="captures/tipus-formateig/13-captura-4-4-strings.png" alt="Captura 4.4: frase trobada dins del disc"><figcaption>Captura 4.4: frase trobada dins del disc</figcaption></figure>
+<h3>Part 5. Esborrat de baix nivell</h3>
+<p><strong>5.1 Omplir el disc de zeros</strong></p><pre><code>dd if=/dev/zero of=disc.img bs=1M count=200 conv=notrunc status=progress</code></pre><figure><img src="captures/tipus-formateig/14-captura-5-1-zeros.png" alt="Captura 5.1: disc omplert de zeros"><figcaption>Captura 5.1: disc omplert de zeros</figcaption></figure>
+<p><strong>5.2 Tornar a intentar recuperar fitxers</strong></p><pre><code>photorec /d recup_zeros /cmd disc.img
+options,fileopt,everything,enable,search
+ls recup_zeros.1</code></pre>
+<p><strong>5.3 Buscar el text un altre cop</strong></p><pre><code>strings -e S disc.img | grep pizza</code></pre><figure><img src="captures/tipus-formateig/15-captura-5-2-5-3-sense-fitxers.png" alt="Captura 5.2 i 5.3: photorec sense fitxers i grep sense resultat"><figcaption>Captura 5.2 i 5.3: photorec sense fitxers i grep sense resultat</figcaption></figure>
+<h3>Neteja</h3>
+<pre><code>cd ~/practica
+rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src="captures/tipus-formateig/16-captura-neteja.png" alt="Captura de la neteja"><figcaption>Captura de la neteja</figcaption></figure><pre><code>ls -l</code></pre><figure><img src="captures/tipus-formateig/17-captura-neteja-ls.png" alt="Captura: només queden les còpies originals"><figcaption>Captura: només queden les còpies originals</figcaption></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
