@@ -33,7 +33,7 @@
         <tr><td>2</td><td><a href="#apartat3">Virtualització</a></td></tr>
         <tr><td>3</td><td><a href="#apartat4">Gestors arrencada</a></td></tr>
         <tr><td>4</td><td><a href="#apartat4">Xarxa basicà</a></td></tr>
-        <tr><td>5</td><td><a href="#apartat4">Comandes generals</a></td></tr>
+        <tr><td>5</td><td><a href="#apartat5">Comandes generals</a></td></tr>
         <tr><td>6</td><td><a href="#apartat6">Instal·lacions aplicacions</a></td></tr>
       </tbody>
     </table>
@@ -110,11 +110,35 @@
       <h2>4.Xarxa basicà</h2>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
-     <h2>5.Comandes generals</h2>
-      <p>Les comandes generals són les ordres bàsiques de la terminal per navegar pel sistema i gestionar fitxers. Amb cd entro a un directori, amb ls veig el que hi ha, i amb cat o nano puc veure o editar un fitxer. Per instal·lar aplicacions faig servir apt, amb sudo quan cal permisos d’administrador.</p>
-      <img src="../img/comandes-generals-1.png" alt="Exemple de captura de pantalla de la gestió d'usuaris">
+    </article>
+    <article class="apartat" id="apartat5">
+      <h2>5. Comandes generals</h2>
+      <p>Ordres bàsiques per moure's pel sistema i gestionar fitxers.</p>
+
+      <h3>Navegar</h3>
+      <p><code>pwd</code>: mostra la carpeta on som.</p>
+      <p><code>ls -l</code>: llista el contingut de la carpeta amb més detall.</p>
+      <p><code>cd carpeta</code>: entra a una carpeta. <code>cd ..</code> puja una carpeta. <code>cd ~</code> torna a la carpeta personal.</p>
+      <img src="../img/comandes-generals-1.png" alt="Comandes de navegació a la terminal">
+
+      <h3>Crear, copiar, moure i esborrar</h3>
+      <p><code>mkdir carpeta</code>: crea una carpeta.</p>
+      <p><code>touch fitxer.txt</code>: crea un fitxer buit.</p>
+      <p><code>cp origen destí</code>: copia un fitxer. <code>mv origen destí</code> el mou o el renombra.</p>
+      <p><code>rm fitxer.txt</code>: esborra un fitxer. <code>rm -r carpeta</code> esborra una carpeta i el seu contingut.</p>
+
+      <h3>Editar fitxers amb nano</h3>
+      <p><code>nano notes.txt</code>: obre el fitxer, o el crea si no existeix. Escriu el text.</p>
+      <p><code>Ctrl + O</code> i després <code>Enter</code>: guarda els canvis.</p>
+      <p><code>Ctrl + X</code>: surt de nano.</p>
+      <p><code>cat notes.txt</code>: mostra el contingut del fitxer sense obrir-lo.</p>
+
+      <h3>Permisos</h3>
+      <p><code>sudo</code> davant d'una ordre la fa com a administrador, quan cal permisos.</p>
+
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
+
       <h2 id="apartat6">6.Instal·lacions aplicacions</h2>
 
       <h3>apt update</h3>
