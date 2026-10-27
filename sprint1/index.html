@@ -34,7 +34,7 @@
         <tr><td>3</td><td><a href="#apartat4">Gestors arrencada</a></td></tr>
         <tr><td>4</td><td><a href="#apartat4">Xarxa basicà</a></td></tr>
         <tr><td>5</td><td><a href="#apartat4">Comandes generals</a></td></tr>
-        <tr><td>6</td><td><a href="#apartat4">Instal·lacions aplicacions</a></td></tr>
+        <tr><td>6</td><td><a href="#apartat6">Instal·lacions aplicacions</a></td></tr>
       </tbody>
     </table>
 
@@ -115,7 +115,21 @@
       <img src="../img/comandes-generals-1.png" alt="Exemple de captura de pantalla de la gestió d'usuaris">
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
-      <h2>6.Instal·lacions aplicacions</h2>
+      <h2 id="apartat6">6.Instal·lacions aplicacions</h2>
+      <p>He instal·lat i actualitzat paquets amb <code>apt</code>. Abans d'instal·lar res, he passat a root amb <code>sudo su</code>, així que no cal posar <code>sudo</code> a cada ordre.</p>
+
+      <h3>apt update</h3>
+      <p><code>apt update</code> — Actualitza la llista de paquets disponibles, mirant les adreces dels repositoris definides a <code>/etc/apt/sources.list</code>. No instal·la ni actualitza res per si sol; cal executar-lo sempre abans d'instal·lar o actualitzar, perquè el sistema sàpiga quines versions existeixen.</p>
+      <img src="../img/apt-update.png" alt="Sortida de apt update">
+
+      <h3>apt upgrade</h3>
+      <p><code>apt upgrade</code> — Actualitza els paquets que ja tinc instal·lats a la versió més recent disponible, sense instal·lar-ne de nous ni treure'n cap. A la captura no hi ha res per actualitzar (0 actualitzats). El sistema només avisa que <code>libfwupd2</code> i <code>python3-netifaces</code> s'han instal·lat automàticament i ja no són necessaris, i suggereix <code>sudo apt autoremove</code> per suprimir-los.</p>
+      <img src="../img/apt-upgrade.png" alt="Sortida de apt upgrade">
+
+      <h3>apt install cmatrix</h3>
+      <p><code>apt install cmatrix</code> — Instal·la el paquet <code>cmatrix</code>, un programa que mostra l'efecte de pluja de la pel·lícula Matrix a la terminal. Primer llegeix la llista de paquets i comprova les dependències (en aquest cas no n'hi ha de noves). Després descarrega el paquet (33,7 kB) des del repositori d'Ubuntu, el desempaqueta i el configura. Els missatges finals sobre els activadors de l'escriptori i del manual són normals i no indiquen cap error. Per provar-lo, executa <code>cmatrix</code>, i per sortir prem <code>q</code>.</p>
+      <img src="../img/apt-install-cmatrix.png" alt="Sortida de apt install cmatrix">
+
       <p> He instal·lat el paquet tree amb apt, i he fet servir dpkg per comprovar-ne l’estat abans i després. Després l’he esborrat amb apt remove, i he comprovat amb dpkg que ja no apareixia com a instal·lat. Finalment he executat apt purge per esborrar-ne també les configuracions. </p>
       <img src="../img/Install.png" alt="Exemple de captura de pantalla de la gestió d'usuaris">
      <img src="../img/dpkg-2.png" alt="Exemple de captura de pantalla de la gestió d'usuaris"> 
