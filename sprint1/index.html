@@ -135,6 +135,18 @@
       <h3>aptitude install figlet</h3>
       <p><code>sudo aptitude install figlet</code> — Instal·la el paquet <code>figlet</code>, que converteix text en lletres grans fetes de caràcters ASCII. A diferència d'<code>apt</code>, <code>aptitude</code> recorda quins paquets ha instal·lat com a dependències i, quan ja no són necessaris, els elimina sol. A la captura veus que, a més d'instal·lar <code>figlet</code>, suprimeix <code>libfwupd2</code> i <code>python3-netifaces</code>, que s'havien instal·lat automàticament i ja no feien falta. Després he provat el programa amb <code>figlet " hola"</code>, que imprimeix el text en lletres grans.</p>
       <img src="../img/aptitude-install-figlet.png" alt="Sortida de aptitude install figlet i figlet hola">
+
+      <h3>aptitude remove figlet</h3>
+      <p><code>sudo aptitude remove figlet</code> — Desinstal·la <code>figlet</code>, però manté els fitxers de configuració. Com que no tenia dependències pendents, només n'elimina aquest paquet. Libera uns 752 kB.</p>
+      <img src="../img/aptitude-remove-figlet.png" alt="Sortida de aptitude remove figlet">
+
+      <h3>aptitude purge figlet</h3>
+      <p><code>sudo aptitude purge figlet</code> — Desinstal·la <code>figlet</code> i també esborra els seus fitxers de configuració. La <code>{p}</code> que apareix al costat del nom indica que el paquet quedarà purgat. Confirma amb <code>y</code> i el sistema esborra la configuració.</p>
+      <img src="../img/aptitude-purge-figlet.png" alt="Sortida de aptitude purge figlet">
+
+      <h3>aptitude show figlet</h3>
+      <p><code>aptitude show figlet</code> — Mostra la informació del paquet: versió, estat, prioritat, dependències i descripció. A la captura, <code>figlet</code> apareix com a <em>no instal·lat</em>, encara que el paquet existeix als repositoris. Això permet consultar paquets sense instal·lar-los.</p>
+      <img src="../img/aptitude-show-figlet.png" alt="Sortida de aptitude show figlet">
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     
