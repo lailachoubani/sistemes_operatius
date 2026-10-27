@@ -157,6 +157,19 @@
       <img src="../img/apt-f-install-fortune.png" alt="Sortida de apt -f install">
       <p><code>fortune</code> — Amb el programa instal·lat, només mostra <em>No fortunes found</em>, perquè el paquet no inclou les frases. Per això cal instal·lar <code>fortunes-min</code>, que sí que les té. Després, <code>fortune</code> mostra una frase aleatòria.</p>
       <img src="../img/fortunes-min-fortune.png" alt="Instal·lació de fortunes-min i fortune amb una frase">
+
+      <h3>Desinstal·lació i estat amb dpkg</h3>
+      <p><code>sudo dpkg -r fortune-mod</code> — Desinstal·la el paquet, però manté els fitxers de configuració del sistema.</p>
+      <img src="../img/dpkg-r-fortune-mod.png" alt="Sortida de dpkg -r fortune-mod">
+
+      <p><code>sudo dpkg -P fortunes-min</code> — Purga el paquet: el desinstal·la i també esborra la seva configuració.</p>
+      <img src="../img/dpkg-P-fortunes-min.png" alt="Sortida de dpkg -P fortunes-min">
+
+      <p><code>dpkg -s fortune-mod</code> — Mostra l'estat i la informació del paquet. A la captura, l'estat és <em>deinstall ok config-files</em>: el paquet està desinstal·lat, però els fitxers de configuració encara hi són.</p>
+      <img src="../img/dpkg-s-fortune-mod.png" alt="Sortida de dpkg -s fortune-mod">
+
+      <p><code>dpkg --get-selections | grep fortune</code> — Filtra la llista de paquets coneguts pel sistema per buscar-ne un en concret. Surt <code>fortune-mod</code> amb l'estat <em>deinstall</em>, és a dir, desinstal·lat però amb configuració.</p>
+      <img src="../img/dpkg-get-selections-fortune.png" alt="Sortida de dpkg --get-selections | grep fortune">
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     
