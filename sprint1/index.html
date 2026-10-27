@@ -117,20 +117,29 @@
       <h3>Navegar</h3>
       <p><code>pwd</code>: mostra la carpeta on som.</p>
       <p><code>ls -l</code>: llista el contingut de la carpeta amb més detall.</p>
-      <p><code>cd carpeta</code>: entra a una carpeta. <code>cd ..</code> puja una carpeta. <code>cd ~</code> torna a la carpeta personal.</p>
       <img src="../img/comandes-generals-1.png" alt="Comandes de navegació a la terminal">
+      <img src="../img/comandes-navegar.png" alt="Sortida de pwd i ls -l">
 
-      <h3>Crear, copiar, moure i esborrar</h3>
-      <p><code>mkdir carpeta</code>: crea una carpeta.</p>
-      <p><code>touch fitxer.txt</code>: crea un fitxer buit.</p>
-      <p><code>cp origen destí</code>: copia un fitxer. <code>mv origen destí</code> el mou o el renombra.</p>
-      <p><code>rm fitxer.txt</code>: esborra un fitxer. <code>rm -r carpeta</code> esborra una carpeta i el seu contingut.</p>
+      <h3>Crear carpetes i fitxers</h3>
+      <p><code>mkdir practica2</code>: crea una carpeta.</p>
+      <p><code>cd practica2</code>: entra a la carpeta.</p>
+      <p><code>touch notes.txt</code>: crea un fitxer buit.</p>
+      <img src="../img/comandes-crear-carpeta.png" alt="Sortida de mkdir, cd i touch">
 
-      <h3>Editar fitxers amb nano</h3>
-      <p><code>nano notes.txt</code>: obre el fitxer, o el crea si no existeix. Escriu el text.</p>
-      <p><code>Ctrl + O</code> i després <code>Enter</code>: guarda els canvis.</p>
+      <h3>Editar amb nano</h3>
+      <p><code>nano notes.txt</code>: obre el fitxer per editar-lo, o el crea si no existeix.</p>
+      <p><code>Ctrl + O</code> i <code>Enter</code>: guarda els canvis.</p>
       <p><code>Ctrl + X</code>: surt de nano.</p>
-      <p><code>cat notes.txt</code>: mostra el contingut del fitxer sense obrir-lo.</p>
+      <img src="../img/nano-editar.png" alt="Edició de notes.txt amb nano">
+
+      <h3>Llegir, copiar, moure i esborrar</h3>
+      <p><code>cat notes.txt</code>: mostra el contingut del fitxer.</p>
+      <p><code>cp notes.txt copia.txt</code>: fa una còpia del fitxer.</p>
+      <p><code>mv copia.txt copia2.txt</code>: canvia el nom del fitxer, o el mou a una altra carpeta.</p>
+      <p><code>rm copia2.txt</code>: esborra el fitxer.</p>
+      <p><code>cd ..</code>: puja una carpeta.</p>
+      <p><code>rm -r practica2</code>: esborra la carpeta i tot el seu contingut.</p>
+      <img src="../img/comandes-fitxers.png" alt="Sortida de cat, cp, mv, rm i rm -r">
 
       <h3>Permisos</h3>
       <p><code>sudo</code> davant d'una ordre la fa com a administrador, quan cal permisos.</p>
