@@ -147,6 +147,16 @@
       <h3>aptitude show figlet</h3>
       <p><code>aptitude show figlet</code> — Mostra la informació del paquet: versió, estat, prioritat, dependències i descripció. A la captura, <code>figlet</code> apareix com a <em>no instal·lat</em>, encara que el paquet existeix als repositoris. Això permet consultar paquets sense instal·lar-los.</p>
       <img src="../img/aptitude-show-figlet.png" alt="Sortida de aptitude show figlet">
+
+      <h3>Instal·lació des d'un fitxer .deb</h3>
+      <p><code>dpkg</code> treballa directament amb fitxers <code>.deb</code> que ja tens al disc, i <strong>no resol dependències</strong> per tu. Si en falta alguna, dóna error i cal instal·lar-la amb <code>apt</code>.</p>
+      <p><code>apt download fortune-mod</code> — Descarrega el fitxer <code>.deb</code> del paquet sense instal·lar-lo. Després, <code>ls *.deb</code> mostra que el fitxer ja és a la carpeta.</p>
+      <p><code>sudo dpkg -i fortune-mod_*.deb</code> — Instal·la el paquet des del fitxer. A la captura, el primer intent falla perquè el nom està mal escrit, i el segon troba el fitxer. El paquet es desempaqueta, però no es configura, perquè depèn de <code>librecode0</code>, que no tinc instal·lat.</p>
+      <img src="../img/dpkg-deb-fortune-error.png" alt="apt download, ls *.deb i dpkg -i amb error de dependències">
+      <p><code>sudo apt -f install</code> — Corregeix les dependències que <code>dpkg</code> ha deixat pendents. Instal·la <code>librecode0</code> i acaba la configuració de <code>fortune-mod</code>.</p>
+      <img src="../img/apt-f-install-fortune.png" alt="Sortida de apt -f install">
+      <p><code>fortune</code> — Amb el programa instal·lat, només mostra <em>No fortunes found</em>, perquè el paquet no inclou les frases. Per això cal instal·lar <code>fortunes-min</code>, que sí que les té. Després, <code>fortune</code> mostra una frase aleatòria.</p>
+      <img src="../img/fortunes-min-fortune.png" alt="Instal·lació de fortunes-min i fortune amb una frase">
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     
