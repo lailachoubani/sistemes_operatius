@@ -116,60 +116,54 @@
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
       <h2 id="apartat6">6.Instal·lacions aplicacions</h2>
-      <p>He instal·lat i actualitzat paquets amb <code>apt</code>. Abans d'instal·lar res, he passat a root amb <code>sudo su</code>, així que no cal posar <code>sudo</code> a cada ordre.</p>
 
       <h3>apt update</h3>
-      <p><code>apt update</code> — Actualitza la llista de paquets disponibles, mirant les adreces dels repositoris definides a <code>/etc/apt/sources.list</code>. No instal·la ni actualitza res per si sol; cal executar-lo sempre abans d'instal·lar o actualitzar, perquè el sistema sàpiga quines versions existeixen.</p>
+      <p>Actualitza la llista de paquets disponibles.</p>
       <img src="../img/apt-update.png" alt="Sortida de apt update">
 
       <h3>apt upgrade</h3>
-      <p><code>apt upgrade</code> — Actualitza els paquets que ja tinc instal·lats a la versió més recent disponible, sense instal·lar-ne de nous ni treure'n cap. A la captura no hi ha res per actualitzar (0 actualitzats). El sistema només avisa que <code>libfwupd2</code> i <code>python3-netifaces</code> s'han instal·lat automàticament i ja no són necessaris, i suggereix <code>sudo apt autoremove</code> per suprimir-los.</p>
+      <p>Actualitza els paquets instal·lats a la versió més recent.</p>
       <img src="../img/apt-upgrade.png" alt="Sortida de apt upgrade">
 
       <h3>apt install cmatrix</h3>
-      <p><code>apt install cmatrix</code> — Instal·la el paquet <code>cmatrix</code>, un programa que mostra l'efecte de pluja de la pel·lícula Matrix a la terminal. Primer llegeix la llista de paquets i comprova les dependències (en aquest cas no n'hi ha de noves). Després descarrega el paquet (33,7 kB) des del repositori d'Ubuntu, el desempaqueta i el configura. Els missatges finals sobre els activadors de l'escriptori i del manual són normals i no indiquen cap error. Per provar-lo, executa <code>cmatrix</code>, i per sortir prem <code>q</code>.</p>
+      <p>Instal·la <code>cmatrix</code>, un programa que mostra l'efecte de pluja de Matrix a la terminal. Surt amb <code>q</code>.</p>
       <img src="../img/apt-install-cmatrix.png" alt="Sortida de apt install cmatrix">
-      <p>Vídeo de <code>cmatrix</code> en funcionament:</p>
       <video controls width="100%" src="video/cmatrix.webm">El teu navegador no reprodueix vídeo.</video>
 
       <h3>aptitude install figlet</h3>
-      <p><code>sudo aptitude install figlet</code> — Instal·la el paquet <code>figlet</code>, que converteix text en lletres grans fetes de caràcters ASCII. A diferència d'<code>apt</code>, <code>aptitude</code> recorda quins paquets ha instal·lat com a dependències i, quan ja no són necessaris, els elimina sol. A la captura veus que, a més d'instal·lar <code>figlet</code>, suprimeix <code>libfwupd2</code> i <code>python3-netifaces</code>, que s'havien instal·lat automàticament i ja no feien falta. Després he provat el programa amb <code>figlet " hola"</code>, que imprimeix el text en lletres grans.</p>
+      <p>Instal·la <code>figlet</code>, que escriu text en lletres grans. <code>aptitude</code> també elimina les dependències que ja no calen.</p>
       <img src="../img/aptitude-install-figlet.png" alt="Sortida de aptitude install figlet i figlet hola">
 
       <h3>aptitude remove figlet</h3>
-      <p><code>sudo aptitude remove figlet</code> — Desinstal·la <code>figlet</code>, però manté els fitxers de configuració. Com que no tenia dependències pendents, només n'elimina aquest paquet. Libera uns 752 kB.</p>
+      <p>Desinstal·la <code>figlet</code> i manté la configuració.</p>
       <img src="../img/aptitude-remove-figlet.png" alt="Sortida de aptitude remove figlet">
 
       <h3>aptitude purge figlet</h3>
-      <p><code>sudo aptitude purge figlet</code> — Desinstal·la <code>figlet</code> i també esborra els seus fitxers de configuració. La <code>{p}</code> que apareix al costat del nom indica que el paquet quedarà purgat. Confirma amb <code>y</code> i el sistema esborra la configuració.</p>
+      <p>Desinstal·la <code>figlet</code> i esborra també la configuració.</p>
       <img src="../img/aptitude-purge-figlet.png" alt="Sortida de aptitude purge figlet">
 
       <h3>aptitude show figlet</h3>
-      <p><code>aptitude show figlet</code> — Mostra la informació del paquet: versió, estat, prioritat, dependències i descripció. A la captura, <code>figlet</code> apareix com a <em>no instal·lat</em>, encara que el paquet existeix als repositoris. Això permet consultar paquets sense instal·lar-los.</p>
+      <p>Mostra la informació del paquet, encara que no estigui instal·lat.</p>
       <img src="../img/aptitude-show-figlet.png" alt="Sortida de aptitude show figlet">
 
       <h3>Instal·lació des d'un fitxer .deb</h3>
-      <p><code>dpkg</code> treballa directament amb fitxers <code>.deb</code> que ja tens al disc, i <strong>no resol dependències</strong> per tu. Si en falta alguna, dóna error i cal instal·lar-la amb <code>apt</code>.</p>
-      <p><code>apt download fortune-mod</code> — Descarrega el fitxer <code>.deb</code> del paquet sense instal·lar-lo. Després, <code>ls *.deb</code> mostra que el fitxer ja és a la carpeta.</p>
-      <p><code>sudo dpkg -i fortune-mod_*.deb</code> — Instal·la el paquet des del fitxer. A la captura, el primer intent falla perquè el nom està mal escrit, i el segon troba el fitxer. El paquet es desempaqueta, però no es configura, perquè depèn de <code>librecode0</code>, que no tinc instal·lat.</p>
+      <p>Instal·la un paquet des d'un fitxer <code>.deb</code> del disc. No resol dependències.</p>
       <img src="../img/dpkg-deb-fortune-error.png" alt="apt download, ls *.deb i dpkg -i amb error de dependències">
-      <p><code>sudo apt -f install</code> — Corregeix les dependències que <code>dpkg</code> ha deixat pendents. Instal·la <code>librecode0</code> i acaba la configuració de <code>fortune-mod</code>.</p>
+      <p><code>apt -f install</code> corregeix les dependències que falten.</p>
       <img src="../img/apt-f-install-fortune.png" alt="Sortida de apt -f install">
-      <p><code>fortune</code> — Amb el programa instal·lat, només mostra <em>No fortunes found</em>, perquè el paquet no inclou les frases. Per això cal instal·lar <code>fortunes-min</code>, que sí que les té. Després, <code>fortune</code> mostra una frase aleatòria.</p>
+      <p>El programa <code>fortune</code> necessita <code>fortunes-min</code> per mostrar frases.</p>
       <img src="../img/fortunes-min-fortune.png" alt="Instal·lació de fortunes-min i fortune amb una frase">
 
       <h3>Desinstal·lació i estat amb dpkg</h3>
-      <p><code>sudo dpkg -r fortune-mod</code> — Desinstal·la el paquet, però manté els fitxers de configuració del sistema.</p>
+      <p><code>dpkg -r</code> desinstal·la el paquet i manté la configuració.</p>
       <img src="../img/dpkg-r-fortune-mod.png" alt="Sortida de dpkg -r fortune-mod">
-
-      <p><code>sudo dpkg -P fortunes-min</code> — Purga el paquet: el desinstal·la i també esborra la seva configuració.</p>
+      <p><code>dpkg -P</code> desinstal·la el paquet i esborra la configuració.</p>
       <img src="../img/dpkg-P-fortunes-min.png" alt="Sortida de dpkg -P fortunes-min">
-
-      <p><code>dpkg -s fortune-mod</code> — Mostra l'estat i la informació del paquet. A la captura, l'estat és <em>deinstall ok config-files</em>: el paquet està desinstal·lat, però els fitxers de configuració encara hi són.</p>
+      <p><code>dpkg -s</code> mostra l'estat i la informació del paquet.</p>
       <img src="../img/dpkg-s-fortune-mod.png" alt="Sortida de dpkg -s fortune-mod">
-
-      <p><code>dpkg --get-selections | grep fortune</code> — Filtra la llista de paquets coneguts pel sistema per buscar-ne un en concret. Surt <code>fortune-mod</code> amb l'estat <em>deinstall</em>, és a dir, desinstal·lat però amb configuració.</p>
+      <p><code>dpkg --get-selections | grep</code> busca un paquet a la llista del sistema.</p>
       <img src="../img/dpkg-get-selections-fortune.png" alt="Sortida de dpkg --get-selections | grep fortune">
+
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     
