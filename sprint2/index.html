@@ -37,8 +37,8 @@
         <tr><td>1.2</td><td>&nbsp;&nbsp;&nbsp;<a href="#estructura-logica">Estructura lògica d'un disc</a></td></tr>
         <tr><td>1.3</td><td>&nbsp;&nbsp;&nbsp;<a href="#estructura-informacio">Estructura de la informació</a></td></tr>
         <tr><td>1.4</td><td>&nbsp;&nbsp;&nbsp;<a href="#sistemes-fitxers">Sistemes de fitxers</a></td></tr>
-        <tr><td>1.6</td><td>&nbsp;&nbsp;&nbsp;<a href="#tipus-formateig">Tipus de formateig</a></td></tr>
-        <tr><td>1.7</td><td>&nbsp;&nbsp;&nbsp;<a href="#particions-muntatge">Particions i muntatge</a></td></tr>
+        <tr><td>1.5</td><td>&nbsp;&nbsp;&nbsp;<a href="#tipus-formateig">Tipus de formateig</a></td></tr>
+        <tr><td>1.6</td><td>&nbsp;&nbsp;&nbsp;<a href="#particions-muntatge">Particions i muntatge</a></td></tr>
         <tr><td>2</td><td><a href="#gestio-processos">Gestió de processos</a></td></tr>
         <tr><td>3</td><td><a href="#copies-seguretat">Còpies de seguretat i automatització de tasques</a></td></tr>
         <tr><td>4</td><td><a href="#usuaris-grups-permisos">Gestió d'usuari i grup i permisos</a></td></tr>
@@ -144,7 +144,7 @@
     </article>
 
         <article class="apartat" id="tipus-formateig">
-      <h2>1.6 Tipus de formateig</h2>
+      <h2>1.5 Tipus de formateig</h2>
 <h3>Pas 0. Preparar-ho tot</h3>
 <p><strong>0.1 Instal·lar photorec</strong></p><pre><code>sudo apt install testdisk</code></pre><figure><img src="captures/tipus-formateig/01-captura-0-1-testdisk.png" alt="Captura 0.1: instal·lació de testdisk"><figcaption>Instal·lació de testdisk</figcaption></figure><pre><code>which photorec</code></pre><figure><img src="captures/tipus-formateig/02-captura-0-1-which-photorec.png" alt="Captura 0.1: which photorec i comprovació de l&#x27;usuari"><figcaption>which photorec i comprovació de l&#x27;usuari</figcaption></figure><p>Resultat esperat: <code>/usr/bin/photorec</code></p>
 <p><strong>0.2 Crear la carpeta de la pràctica</strong></p><pre><code>mkdir -p ~/practica
@@ -189,7 +189,15 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
     </article>
 
     <article class="apartat" id="particions-muntatge">
-      <h2>1.7 Particions i muntatge</h2>
+      <h2>1.6 Particions i muntatge</h2>
+      <p><strong>Pràctica de classe:</strong></p>
+      <figure><img src="captures/particions-muntatge/01-discs.png" alt="Discs sda i sdb"><figcaption>Discs del sistema: sda (50 GiB, amb GPT) i sdb (20 GiB, sense taula de particions).</figcaption></figure>
+      <figure><img src="captures/particions-muntatge/02-fdisk.png" alt="fdisk creant una partició a sdb"><figcaption>Creació d'una partició primària de 20 GiB a sdb amb <code>fdisk</code>.</figcaption></figure>
+      <figure><img src="captures/particions-muntatge/03-mkfs-mount.png" alt="mkfs.ext4, muntatge i fitxer de prova"><figcaption>Format ext4 a sdb1, muntatge a <code>/mnt/particio1</code> i creació de fitxers de prova.</figcaption></figure>
+      <figure><img src="captures/particions-muntatge/04-umount-blkid.png" alt="umount, muntatge i blkid"><figcaption>Desmuntatge i muntatge de nou de sdb1, i <code>blkid</code> per veure'n l'UUID.</figcaption></figure>
+      <figure><img src="captures/particions-muntatge/05-fstab.png" alt="Entrada de sdb1 a /etc/fstab"><figcaption>Entrada de sdb1 a <code>/etc/fstab</code>, amb l'UUID, per muntar-la sempre.</figcaption></figure>
+      <figure><img src="captures/particions-muntatge/06-login.png" alt="Pantalla d'inici de sessió"><figcaption>Pantalla d'inici de sessió després de reiniciar.</figcaption></figure>
+      <figure><img src="captures/particions-muntatge/07-df-final.png" alt="df -hT i ls de la partició muntada"><figcaption>Després de reiniciar, <code>df -hT</code> mostra <code>/mnt/particio1</code> muntada i <code>ls</code> hi troba <code>prova2</code>.</figcaption></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="gestio-processos">
