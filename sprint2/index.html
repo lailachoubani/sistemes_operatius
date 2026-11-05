@@ -51,16 +51,56 @@
 
     <article class="apartat" id="estructura-fisica">
       <h2>1.1 Estructura física d'un disc</h2>
+      <p><strong>Gestor d’arrencada:</strong> és un programa que s’executa en encendre l’ordinador, abans que es carregui el sistema operatiu. Decideix quin sistema carregar i sovint mostra un menú per triar-ne un. A Ubuntu és GRUB.</p>
+      <p><strong>Disc mecànic (HDD):</strong> guarda la informació en uns plats magnètics que giren, i un capçal que llegeix i escriu sobre ells. Té parts mòbils, així que és més lent i més fràgil als cops, però és més barat per gigabyte.</p>
+      <p><strong>Disc sòlid (SSD):</strong> guarda la informació en memòria flaix, sense cap part mòbil. És més ràpid i més resistent als cops, però és més car per gigabyte.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="estructura-logica">
       <h2>1.2 Estructura lògica d'un disc</h2>
+      <h3>Taula de particions</h3>
+      <p><strong>Definició:</strong> l'estructura que indica com està dividit el disc i on comença i acaba cada partició. Hi ha dos formats: MBR i GPT.</p>
+
+      <h3>MBR (Master Boot Record)</h3>
+      <p><strong>Definició:</strong> format antic de taula de particions, que s'usa amb BIOS.</p>
+      <p><strong>Característiques:</strong> permet fins a 4 particions primàries i només admet discs de fins a 2 TB.</p>
+
+      <h3>GPT (GUID Partition Table)</h3>
+      <p><strong>Definició:</strong> format actual de taula de particions, que s'usa amb UEFI.</p>
+      <p><strong>Característiques:</strong> no té el límit de quatre particions i admet discs de més de 2 TB. Guarda una còpia de la taula i fa comprovacions d'integritat, així que és més segur.</p>
+
+      <h3>Diferències entre MBR i GPT</h3>
+      <ul>
+        <li><strong>Particions:</strong> MBR, fins a 4 primàries. GPT, gairebé sense límit.</li>
+        <li><strong>Mida màxima de disc:</strong> MBR, 2 TB. GPT, més de 2 TB.</li>
+        <li><strong>Seguretat:</strong> MBR, sense còpia de la taula. GPT, amb còpia i comprovacions.</li>
+        <li><strong>Firmware:</strong> MBR, BIOS. GPT, UEFI.</li>
+      </ul>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="estructura-informacio">
       <h2>1.3 Estructura de la informació</h2>
+      <h3>Partició</h3>
+      <p><strong>Definició:</strong> una part del disc que el sistema veu com una unitat independent, amb la seva pròpia mida i el seu propi sistema de fitxers.</p>
+
+      <h3>Volum</h3>
+      <p><strong>Definició:</strong> abstracció que es posa per sobre de les particions. Pot combinar diverses particions o discs en una sola unitat i es pot redimensionar sense reparticionar el disc.</p>
+      <p><strong>Diferència:</strong> una partició és una divisió física del disc, mentre que un volum és una capa lògica que la gestiona.</p>
+
+      <h3>Sector i bloc</h3>
+      <p><strong>Sector:</strong> unitat física mínima del disc, de 512 bytes.</p>
+      <p><strong>Bloc:</strong> unitat lògica mínima on el sistema de fitxers guarda la informació. Sol ser de 4096 bytes, que equival a 8 sectors (4096 / 512 = 8).</p>
+
+      <h3>Fragmentació interna</h3>
+      <p><strong>Definició:</strong> espai desaprofitat dins d'un bloc quan el fitxer no l'omple del tot. Per exemple, un fitxer de 1 byte ocupa un bloc de 4096 bytes.</p>
+
+      <h3>Fragmentació externa</h3>
+      <p><strong>Definició:</strong> fitxers guardats en blocs que no són contigus, repartits per tot el disc.</p>
+
+      <h3>Sistema de fitxers</h3>
+      <p><strong>Definició:</strong> la manera com el sistema organitza i guarda els fitxers dins d'una partició. S'instal·la amb el formatatge (per exemple, ext4, FAT32 o NTFS).</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
@@ -133,6 +173,151 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
     </article>
     <article class="apartat" id="usuaris-grups-permisos">
       <h2>4. Gestió d'usuari i grup i permisos</h2>
+<h3>Resum · Conceptes</h3>
+<p><strong>Usuari:</strong> identitat del sistema, amb nom, UID, carpeta personal i shell. Els fitxers i els processos sempre pertanyen a un usuari.</p>
+<p><strong>UID:</strong> número de l'usuari. 0 és <code>root</code>, de 1 a 999 són usuaris del sistema (serveis), i a partir de 1000 són persones.</p>
+<p><strong>Grup:</strong> conjunt d'usuaris amb nom i número (GID). Serveix per donar permisos a diverses persones alhora.</p>
+<p><strong>Grup principal:</strong> el grup dels fitxers que crea l'usuari. Cada usuari en té un i només un. Ubuntu crea per a cada usuari un grup personal amb el mateix nom.</p>
+<p><strong>Grups secundaris:</strong> altres grups als quals pertany l'usuari. En pot tenir tants com calgui.</p>
+<p><strong>Fitxers importants:</strong> <code>/etc/passwd</code> (usuaris), <code>/etc/shadow</code> (contrasenyes xifrades, només root), <code>/etc/group</code> (grups), <code>/etc/skel</code> (carpeta model de cada usuari nou) i <code>/home</code> (carpetes personals).</p>
+<p><strong>Ordres d'Ubuntu:</strong> <code>useradd</code>, <code>userdel</code> i <code>groupadd</code> no pregunten res i no creen carpeta personal si no els ho dius. <code>adduser</code>, <code>deluser</code> i <code>addgroup</code> són interactives i ho fan tot sols.</p>
+<p>Gairebé totes les ordres d'usuaris i grups s'executen amb <code>sudo</code>.</p>
+
+<h3>Abans de començar</h3>
+<p>Fes una instantània de la màquina virtual. Si t'equivoques amb un usuari, la pots recuperar i tornar a començar.</p>
+<pre><code>sudo -v</code></pre>
+<p>Totes les contrasenyes de PixelForge són <code>Pixel.2026</code>.</p>
+
+<h3>Nivell 0 · Conèixer el sistema</h3>
+<p><strong>0.1 Qui sóc</strong></p><pre><code>whoami
+id
+grep $USER /etc/passwd
+tail -5 /etc/passwd</code></pre>
+<p><strong>0.2 Protecció de /etc/shadow</strong></p><pre><code>cat /etc/shadow
+sudo grep $USER /etc/shadow</code></pre>
+<p><strong>0.3 Membres del grup sudo i contingut de /etc/skel</strong></p><pre><code>getent group sudo
+ls -a /etc/skel</code></pre>
+<p><strong>Captura 1 (pendent):</strong> sortides dels passos 2, 3, 5 i 6.</p>
+
+<h3>Nivell 1 · Crear usuaris</h3>
+<p><strong>1.1 Crear la Núria amb useradd (sense opcions)</strong></p><pre><code>sudo useradd nuria
+grep nuria /etc/passwd
+ls /home</code></pre>
+<p><strong>1.2 Esborrar-la i crear-la bé</strong></p><pre><code>sudo userdel nuria
+sudo useradd -m -s /bin/bash -c &quot;Nuria Vidal&quot; nuria
+sudo passwd nuria
+grep nuria /etc/passwd
+ls -a /home/nuria</code></pre>
+<p><strong>1.3 Crear el Pau amb adduser</strong></p><pre><code>sudo adduser pau</code></pre>
+<p>Posa la contrasenya, el nom complet <code>Pau Serra</code>, prem Enter a la resta de preguntes i confirma amb <code>Y</code>.</p>
+<p><strong>1.4 Crear el Marc amb useradd</strong></p><pre><code>sudo useradd -m -s /bin/bash -c &quot;Marc Soler&quot; marc
+sudo passwd marc</code></pre>
+<p><strong>1.5 Crear la Laia des de l'entorn gràfic</strong></p>
+<p>Obre Paràmetres → Sistema → Usuaris → Afegeix un usuari. Tipus Estàndard, nom complet <code>Laia Puig</code>, nom d'usuari <code>laia</code>, i contrasenya <code>Pixel.2026</code>.</p>
+<pre><code>grep laia /etc/passwd</code></pre>
+<p><strong>1.6 Comprovació</strong></p><pre><code>getent passwd nuria pau marc laia
+ls /home</code></pre>
+<p><strong>Captura 2 (pendent):</strong> sortida de <code>getent passwd nuria pau marc laia</code> i de <code>ls /home</code>.</p>
+
+<h3>Nivell 2 · Iniciar sessió com a altre usuari</h3>
+<p><strong>2.1 Des del terminal</strong></p><pre><code>su - nuria
+whoami
+pwd
+touch primer_dia.txt
+ls -l
+exit</code></pre>
+<p>Si surt <code>su: Authentication failure</code>, la contrasenya és la de l'usuari al qual entres: <code>Pixel.2026</code>.</p>
+<p><strong>2.2 Des de l'entorn gràfic</strong></p>
+<p>Tanca la sessió, entra com a <code>Pau Serra</code> amb la contrasenya de la missió, obre un terminal i escriu <code>whoami</code> i <code>ls</code>. Després torna a entrar amb el teu usuari.</p>
+<p><strong>Captura 3 (pendent):</strong> terminal amb <code>su - nuria</code>, <code>whoami</code>, <code>pwd</code>, <code>ls -l</code> i <code>exit</code>.</p>
+
+<h3>Nivell 3 · Crear i esborrar grups</h3>
+<p><strong>3.1 Crear grups</strong></p><pre><code>sudo groupadd programadors
+sudo addgroup artistes
+sudo groupadd testers
+sudo addgroup becaris</code></pre>
+<p><code>addgroup</code> t'explica quin GID ha triat.</p>
+<p><strong>3.2 Crear un grup amb el nom mal escrit i esborrar-lo</strong></p><pre><code>sudo groupadd progamadors
+tail -5 /etc/group
+sudo groupdel progamadors
+getent group progamadors</code></pre>
+<p><strong>Captura 4 (pendent):</strong> sortida de <code>tail -5 /etc/group</code> abans d'esborrar, i el <code>groupdel</code> amb la comprovació.</p>
+
+<h3>Nivell 4 · Afegir i treure usuaris dels grups</h3>
+<p><strong>4.1 Afegir sense perdre grups</strong></p><pre><code>sudo usermod -aG programadors nuria
+groups nuria
+sudo gpasswd -a pau artistes
+sudo adduser marc testers
+sudo adduser laia becaris
+sudo gpasswd -a laia artistes</code></pre>
+<p><strong>4.2 L'error del -G sense la a</strong></p><pre><code>sudo usermod -G testers nuria
+groups nuria</code></pre>
+<p>Aquí la Núria ha perdut el grup <code>programadors</code>. Torna-la a afegir amb <code>-aG</code>.</p>
+<pre><code>sudo usermod -aG programadors nuria
+groups nuria</code></pre>
+<p><strong>4.3 Treure un usuari d'un grup</strong></p><pre><code>sudo gpasswd -d laia artistes</code></pre>
+<p>També es pot fer amb <code>sudo deluser laia artistes</code>.</p>
+<p><strong>4.4 Comprovació</strong></p><pre><code>getent group programadors artistes testers becaris</code></pre>
+<p><strong>Captura 5 (pendent):</strong> l'error del pas 4.2, l'arranjament i la sortida de la comprovació.</p>
+
+<h3>Nivell 5 · Canviar el grup principal</h3>
+<p><strong>5.1 Abans del canvi</strong></p><pre><code>id pau
+su - pau
+touch dibuix_abans.png
+ls -l
+exit</code></pre>
+<p><strong>5.2 Canviar el grup principal</strong></p><pre><code>sudo usermod -g programadors pau
+id pau</code></pre>
+<p><strong>5.3 Després del canvi</strong></p><pre><code>su - pau
+touch codi_despres.py
+ls -l
+exit</code></pre>
+<p>Els fitxers que ja existien no canvien de grup. Només els nous agafen el grup principal.</p>
+<p><strong>Captura 6 (pendent):</strong> els dos <code>id pau</code> (abans i després) i el <code>ls -l</code> final.</p>
+
+<h3>Nivell 6 · Bloquejar i desbloquejar un compte</h3>
+<p><strong>6.1 Bloquejar Marc</strong></p><pre><code>sudo passwd -S marc
+sudo passwd -l marc
+sudo passwd -S marc
+sudo grep marc /etc/shadow</code></pre>
+<p>La <code>P</code> vol dir contrasenya vàlida, i la <code>L</code> vol dir bloquejat. Davant de la contrasenya xifrada apareix un <code>!</code>.</p>
+<p><strong>6.2 Comprovar que no pot entrar</strong></p><pre><code>su - marc</code></pre>
+<p><strong>6.3 Desbloquejar</strong></p><pre><code>sudo passwd -u marc
+sudo passwd -S marc
+su - marc
+exit</code></pre>
+<p><strong>Captura 7 (pendent):</strong> el <code>!</code> a <code>/etc/shadow</code>, l'error <code>Authentication failure</code> i l'estat <code>P</code> després de desbloquejar.</p>
+<p>No bloquegis mai el teu propi usuari. Si ho fas, no podràs fer servir <code>sudo</code> per desbloquejar-te.</p>
+
+<h3>Nivell 7 · Canviar el nom d'un usuari</h3>
+<p>La Núria no pot tenir cap sessió oberta. Si encara hi ha un terminal amb <code>su - nuria</code>, escriu-hi <code>exit</code>.</p>
+<p><strong>7.1 Canviar el nom d'usuari</strong></p><pre><code>sudo usermod -l nvidal nuria
+id nvidal
+grep nvidal /etc/passwd</code></pre>
+<p>El nom ha canviat, però el grup personal encara es diu <code>nuria</code> i la carpeta continua sent <code>/home/nuria</code>.</p>
+<p><strong>7.2 Canviar el grup personal i la carpeta</strong></p><pre><code>sudo groupmod -n nvidal nuria
+sudo usermod -d /home/nvidal -m nvidal</code></pre>
+<p><strong>7.3 Comprovacions</strong></p><pre><code>id nvidal
+ls -l /home
+ls -l /home/nvidal
+su - nvidal
+whoami
+exit</code></pre>
+<p><strong>Captura 8 (pendent):</strong> el primer <code>id nvidal</code> i el del pas 7.3.</p>
+
+<h3>Nivell 8 · Esborrar usuaris i grups</h3>
+<p><strong>8.1 Esborrar Laia sense -r</strong></p><pre><code>ls -l /home
+sudo userdel laia
+ls -l /home</code></pre>
+<p>La carpeta continua allà, però el propietari surt amb un número. És l'UID d'un usuari que ja no existeix.</p>
+<p><strong>8.2 Esborrar la carpeta orfe</strong></p><pre><code>sudo rm -r /home/laia</code></pre>
+<p>Llegeix l'ordre dues vegades abans de prémer Enter.</p>
+<p><strong>8.3 Esborrar el grup becaris</strong></p><pre><code>sudo delgroup becaris
+getent group becaris</code></pre>
+<p><strong>8.4 Estat final de PixelForge</strong></p><pre><code>getent passwd nvidal pau marc
+getent group programadors artistes testers</code></pre>
+<p><strong>Captura 9 (pendent):</strong> la carpeta amb propietari <code>1004</code> del pas 8.1, la comprovació de l'estat final i el repte 8.</p>
+
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="quotes-disc">
