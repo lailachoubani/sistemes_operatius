@@ -59,24 +59,9 @@
 
     <article class="apartat" id="estructura-logica">
       <h2>1.2 Estructura lògica d'un disc</h2>
-      <h3>Taula de particions</h3>
-      <p><strong>Definició:</strong> l'estructura que indica com està dividit el disc i on comença i acaba cada partició. Hi ha dos formats: MBR i GPT.</p>
-
-      <h3>MBR (Master Boot Record)</h3>
-      <p><strong>Definició:</strong> format antic de taula de particions, que s'usa amb BIOS.</p>
-      <p><strong>Característiques:</strong> permet fins a 4 particions primàries i només admet discs de fins a 2 TB.</p>
-
-      <h3>GPT (GUID Partition Table)</h3>
-      <p><strong>Definició:</strong> format actual de taula de particions, que s'usa amb UEFI.</p>
-      <p><strong>Característiques:</strong> no té el límit de quatre particions i admet discs de més de 2 TB. Guarda una còpia de la taula i fa comprovacions d'integritat, així que és més segur.</p>
-
-      <h3>Diferències entre MBR i GPT</h3>
-      <ul>
-        <li><strong>Particions:</strong> MBR, fins a 4 primàries. GPT, gairebé sense límit.</li>
-        <li><strong>Mida màxima de disc:</strong> MBR, 2 TB. GPT, més de 2 TB.</li>
-        <li><strong>Seguretat:</strong> MBR, sense còpia de la taula. GPT, amb còpia i comprovacions.</li>
-        <li><strong>Firmware:</strong> MBR, BIOS. GPT, UEFI.</li>
-      </ul>
+      <p><strong>Format de particions del disc:</strong> és la manera com el disc es divideix en particions. Hi ha dos formats: MBR i GPT.</p>
+      <p><strong>MBR (Master Boot Record):</strong> és el format antic, que s’usa amb BIOS. Permet fins a 4 particions primàries i només admet discs de fins a 2 TB.</p>
+      <p><strong>GPT (GUID Partition Table):</strong> és el format actual, que s’usa amb UEFI. No té el límit de quatre particions i admet discs de més de 2 TB. Guarda una còpia de la taula de particions i fa comprovacions d’integritat, així que és més segur.</p>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
