@@ -76,6 +76,10 @@
       <h3>Volum</h3>
       <p><strong>Definició:</strong> abstracció que es posa per sobre de les particions. Pot combinar diverses particions o discs en una sola unitat i es pot redimensionar sense reparticionar el disc.</p>
       <p><strong>Diferència:</strong> una partició és una divisió física del disc, mentre que un volum és una capa lògica que la gestiona.</p>
+
+      <figure><img src="captures/estructura-informacio/01-fdisk-sectors.png" alt="fdisk -l: sectors de 512 bytes"><figcaption>Captura: <code>fdisk -l</code>, sectors de 512 bytes i discs de 4 KiB amb 8 sectors.</figcaption></figure>
+      <figure><img src="captures/estructura-informacio/02-tune2fs-bloc.png" alt="tune2fs: mida de bloc de 4096 bytes"><figcaption>Captura: <code>tune2fs -l</code>, mida de bloc de 4096 bytes.</figcaption></figure>
+      <figure><img src="captures/estructura-informacio/03-du-fragmentacio-interna.png" alt="du: fitxer de 5 bytes que ocupa 4,0K"><figcaption>Captura: <code>du</code>, un fitxer de 5 bytes ocupa 4,0K, que és un bloc. Això és fragmentació interna.</figcaption></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
