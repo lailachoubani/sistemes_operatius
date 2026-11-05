@@ -47,12 +47,12 @@
     </table>
 
     <article class="apartat" id="sistemes-fitxers-particions">
-      <h2>1. Sistemes de fitxers i particions</h2>
+      <h2>💽 1. Sistemes de fitxers i particions</h2>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="estructura-fisica">
-      <h2>1.1 Estructura física d'un disc</h2>
+      <h2>💾 1.1 Estructura física d'un disc</h2>
       <p><strong>Gestor d’arrencada:</strong> és un programa que s’executa en encendre l’ordinador, abans que es carregui el sistema operatiu. Decideix quin sistema carregar i sovint mostra un menú per triar-ne un. A Ubuntu és GRUB.</p>
       <p><strong>Disc mecànic (HDD):</strong> guarda la informació en uns plats magnètics que giren, i un capçal que llegeix i escriu sobre ells. Té parts mòbils, així que és més lent i més fràgil als cops, però és més barat per gigabyte.</p>
       <p><strong>Disc sòlid (SSD):</strong> guarda la informació en memòria flaix, sense cap part mòbil. És més ràpid i més resistent als cops, però és més car per gigabyte.</p>
@@ -60,7 +60,7 @@
     </article>
 
     <article class="apartat" id="estructura-logica">
-      <h2>1.2 Estructura lògica d'un disc</h2>
+      <h2>🗂️ 1.2 Estructura lògica d'un disc</h2>
       <p><strong>Format de particions del disc:</strong> és la manera com el disc es divideix en particions. Hi ha dos formats: MBR i GPT.</p>
       <p><strong>MBR (Antic / BIOS):</strong></p>
       <ul>
@@ -79,7 +79,7 @@
     </article>
 
     <article class="apartat" id="estructura-informacio">
-      <h2>1.3 Estructura de la informació</h2>
+      <h2>🧱 1.3 Estructura de la informació</h2>
       <h3>Sector</h3>
       <p><strong>Definició:</strong> unitat física mínima del disc, de 512 bytes.</p>
 
@@ -103,7 +103,7 @@
     </article>
 
     <article class="apartat" id="sistemes-fitxers">
-      <h2>1.4 Sistemes de fitxers</h2>
+      <h2>📁 1.4 Sistemes de fitxers</h2>
       <p>Els sistemes de fitxers més comuns són FAT32, NTFS i ext4.</p>
 
       <h3>1. FAT / FAT32 (File Allocation Table)</h3>
@@ -144,7 +144,7 @@
     </article>
 
         <article class="apartat" id="tipus-formateig">
-      <h2>1.5 Tipus de formateig</h2>
+      <h2>🧹 1.5 Tipus de formateig</h2>
 <h3>Pas 0. Preparar-ho tot</h3>
 <p><strong>0.1 Instal·lar photorec</strong></p><pre><code>sudo apt install testdisk</code></pre><figure><img src="captures/tipus-formateig/01-captura-0-1-testdisk.png" alt="Captura 0.1: instal·lació de testdisk"><figcaption>Instal·lació de testdisk</figcaption></figure><pre><code>which photorec</code></pre><figure><img src="captures/tipus-formateig/02-captura-0-1-which-photorec.png" alt="Captura 0.1: which photorec i comprovació de l&#x27;usuari"><figcaption>which photorec i comprovació de l&#x27;usuari</figcaption></figure><p>Resultat esperat: <code>/usr/bin/photorec</code></p>
 <p><strong>0.2 Crear la carpeta de la pràctica</strong></p><pre><code>mkdir -p ~/practica
@@ -189,7 +189,7 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
     </article>
 
     <article class="apartat" id="particions-muntatge">
-      <h2>1.6 Particions i muntatge</h2>
+      <h2>🔌 1.6 Particions i muntatge</h2>
       <p><strong>Pràctica de classe:</strong></p>
       <figure><img src="captures/particions-muntatge/01-discs.png" alt="Discs sda i sdb"><figcaption>Discs del sistema: sda (50 GiB, amb GPT) i sdb (20 GiB, sense taula de particions).</figcaption></figure>
       <figure><img src="captures/particions-muntatge/02-fdisk.png" alt="fdisk creant una partició a sdb"><figcaption>Creació d'una partició primària de 20 GiB a sdb amb <code>fdisk</code>.</figcaption></figure>
@@ -201,15 +201,15 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="gestio-processos">
-      <h2>2. Gestió de processos</h2>
+      <h2>⚙️ 2. Gestió de processos</h2>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="copies-seguretat">
-      <h2>3. Còpies de seguretat i automatització de tasques</h2>
+      <h2>🔁 3. Còpies de seguretat i automatització de tasques</h2>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="usuaris-grups-permisos">
-      <h2>4. Gestió d'usuari i grup i permisos</h2>
+      <h2>👥 4. Gestió d'usuari i grup i permisos</h2>
 <h3>Resum · Conceptes</h3>
 <p><strong>Usuari:</strong> identitat del sistema, amb nom, UID, carpeta personal i shell. Els fitxers i els processos sempre pertanyen a un usuari.</p>
 <p><strong>UID:</strong> número de l'usuari. 0 és <code>root</code>, de 1 a 999 són usuaris del sistema (serveis), i a partir de 1000 són persones.</p>
@@ -358,7 +358,7 @@ getent group programadors artistes testers</code></pre>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="quotes-disc">
-      <h2>5. Quotes de disc</h2>
+      <h2>📊 5. Quotes de disc</h2>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
