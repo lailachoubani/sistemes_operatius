@@ -104,6 +104,42 @@
 
     <article class="apartat" id="sistemes-fitxers">
       <h2>1.4 Sistemes de fitxers</h2>
+      <p>Els sistemes de fitxers més comuns són FAT32, NTFS i ext4.</p>
+
+      <h3>1. FAT / FAT32 (File Allocation Table)</h3>
+      <ul>
+        <li><strong>Desenvolupador:</strong> Microsoft (creat als anys 70/90).</li>
+        <li><strong>Compatibilitat:</strong> universal. Funciona a Windows, Mac, Linux, consoles, TV i autoràdio.</li>
+        <li><strong>Inconvenient principal:</strong> té un límit de màxim 4 GB per fitxer. Si intentes guardar-hi una pel·lícula o una imatge ISO de més de 4 GB, dona error.</li>
+        <li><strong>Ús típic:</strong> pendrives USB antics o petits, i targetes SD de memòria.</li>
+      </ul>
+
+      <h3>2. NTFS (New Technology File System)</h3>
+      <ul>
+        <li><strong>Desenvolupador:</strong> Microsoft (sistema per defecte a Windows).</li>
+        <li><strong>Avantatges:</strong> permet fitxers gegants (sense límit pràctic), gestió de permisos de seguretat, compressió i registre de canvis (journaling) per evitar la pèrdua de dades si falla el corrent.</li>
+        <li><strong>Compatibilitat:</strong>
+          <ul>
+            <li>Windows: lectura i escriptura total.</li>
+            <li>Mac: només lectura per defecte (cal programari extra per escriure-hi).</li>
+            <li>Linux: lectura i escriptura.</li>
+          </ul>
+        </li>
+        <li><strong>Ús típic:</strong> discs durs interns i externs per a Windows.</li>
+      </ul>
+
+      <h3>3. Ext4 (Fourth Extended Filesystem)</h3>
+      <ul>
+        <li><strong>Desenvolupador:</strong> comunitat de codi obert (per defecte a la majoria de distribucions Linux).</li>
+        <li><strong>Avantatges:</strong> molt ràpid, extremadament estable, excel·lent gestió de permisos i fragmentació mínima.</li>
+        <li><strong>Compatibilitat:</strong>
+          <ul>
+            <li>Linux: suport natiu.</li>
+            <li>Windows i Mac: no el reconeixen directament sense eines especials.</li>
+          </ul>
+        </li>
+        <li><strong>Ús típic:</strong> unitats i discs on s'executa el sistema operatiu Linux o servidors.</li>
+      </ul>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
