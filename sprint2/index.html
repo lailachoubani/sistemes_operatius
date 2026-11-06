@@ -268,6 +268,120 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
 <figure><img src="captures/usuaris-grups/08-1.png" alt="Gestió d'usuaris i grups, nivell 8"></figure>
 <figure><img src="captures/usuaris-grups/08-2.png" alt="Gestió d'usuaris i grups, nivell 8"></figure>
 
+      <h3>Permisos:</h3>
+      <h3>Nivell 0 · Muntar l’estudi</h3>
+      <p>He creat la carpeta del projecte amb els quatre subdirectoris i els fitxers de prova, i després he revisat el resultat.</p>
+      <pre><code>sudo mkdir -p /srv/pixelforge
+cd /srv/pixelforge
+sudo mkdir codi art proves compartit
+sudo touch codi/joc.py art/logo.png proves/informe.txt
+ls -l /srv/pixelforge</code></pre>
+      <figure><img src="captures/permisos/00-1.png" alt="Permisos, nivell 0"></figure>
+
+      <h3>Nivell 1 · Llegir els permisos</h3>
+      <p>He mirat els permisos del fitxer i de la carpeta, i després les dades completes amb <code>stat</code>.</p>
+      <pre><code>ls -l /srv/pixelforge/codi/joc.py
+ls -ld /srv/pixelforge/codi
+stat /srv/pixelforge/codi/joc.py</code></pre>
+      <figure><img src="captures/permisos/01-1.png" alt="Permisos, nivell 1"></figure>
+
+      <h3>Nivell 2 · chmod numèric</h3>
+      <p>He canviat els permisos amb notació numèrica i he comprovat que els canvis s’apliquen.</p>
+      <pre><code>sudo chmod -R 750 /srv/pixelforge/codi
+ls -ld /srv/pixelforge/codi
+ls -l /srv/pixelforge/codi
+sudo chmod 755 /srv/pixelforge/art
+sudo chmod 640 /srv/pixelforge/proves/informe.txt
+ls -l /srv/pixelforge/proves</code></pre>
+      <figure><img src="captures/permisos/02-1.png" alt="Permisos, nivell 2"></figure>
+
+      <h3>Nivell 3 · chmod simbòlic</h3>
+      <p>He afegit i tret permisos amb notació simbòlica, i he comprovat cada pas amb <code>ls -ld</code>.</p>
+      <pre><code>sudo chmod u-w /srv/pixelforge/art
+ls -ld /srv/pixelforge/art
+sudo chmod u+w /srv/pixelforge/art
+sudo chmod o= /srv/pixelforge/art
+ls -ld /srv/pixelforge/art
+sudo chmod g+rx,o-w /srv/pixelforge/art</code></pre>
+      <figure><img src="captures/permisos/03-1.png" alt="Permisos, nivell 3"></figure>
+
+      <h3>Nivell 4 · chown i chgrp · donar les carpetes als equips</h3>
+      <p>He canviat el propietari i el grup de les carpetes per donar-les als equips, i he provat l’accés amb l’usuari <code>pau</code>.</p>
+      <pre><code>sudo chown -R pau:programadors /srv/pixelforge/codi
+ls -l /srv/pixelforge
+sudo chgrp -R testers /srv/pixelforge/proves
+ls -ld /srv/pixelforge/proves
+su - pau
+cd /srv/pixelforge/codi
+touch nivell1.py
+ls -l
+touch /srv/pixelforge/proves/intrus.txt   # Permission denied
+exit</code></pre>
+      <figure><img src="captures/permisos/04-1.png" alt="Permisos, nivell 4"></figure>
+
+      <h3>Nivell 5 · SGID · que els fitxers nous siguin de l’equip</h3>
+      <p>He activat el bit SGID a la carpeta <code>codi</code>, i he comprovat que els fitxers nous hereten el grup <code>programadors</code>.</p>
+      <pre><code>ls -ld /srv/pixelforge/codi
+su - nvidal
+touch /srv/pixelforge/codi/mapa.py
+ls -l /srv/pixelforge/codi/mapa.py
+exit
+sudo chmod g+s /srv/pixelforge/codi
+ls -ld /srv/pixelforge/codi
+su - nvidal
+touch /srv/pixelforge/codi/so.py
+ls -l /srv/pixelforge/codi
+exit</code></pre>
+      <figure><img src="captures/permisos/05-1.png" alt="Permisos, nivell 5"></figure>
+
+      <h3>Nivell 6 · Sticky bit · la carpeta compartida</h3>
+      <p>He compartit una carpeta on tots poden escriure, però només el propietari pot esborrar els seus fitxers, gràcies al sticky bit.</p>
+      <pre><code>sudo chmod 777 /srv/pixelforge/compartit
+su - pau
+touch /srv/pixelforge/compartit/de_pau.txt
+exit
+su - marc
+rm /srv/pixelforge/compartit/de_pau.txt   # s’elimina, perquè encara no hi ha sticky bit
+exit
+sudo chmod +t /srv/pixelforge/compartit
+ls -ld /srv/pixelforge/compartit
+su - pau
+touch /srv/pixelforge/compartit/de_pau.txt
+exit
+su - marc
+rm /srv/pixelforge/compartit/de_pau.txt   # L’operació no és permesa
+exit</code></pre>
+      <figure><img src="captures/permisos/06-1.png" alt="Permisos, nivell 6"></figure>
+
+      <h3>Nivell 7 · ACL · accés per a una persona de fora</h3>
+      <p>He donat accés a l’usuari <code>marc</code> a la carpeta <code>codi</code> amb una ACL, i després he tret l’accés.</p>
+      <pre><code>ls -l /srv/pixelforge/codi
+sudo setfacl -m u:marc:rx /srv/pixelforge/codi
+ls -ld /srv/pixelforge/codi
+getfacl /srv/pixelforge/codi
+su - marc
+ls /srv/pixelforge/codi
+exit
+sudo setfacl -x u:marc /srv/pixelforge/codi
+getfacl /srv/pixelforge/codi</code></pre>
+      <figure><img src="captures/permisos/07-1.png" alt="Permisos, nivell 7"></figure>
+      <figure><img src="captures/permisos/07-2.png" alt="Permisos, nivell 7"></figure>
+
+      <h3>Nivell 8 · umask i SUID</h3>
+      <p>He comprovat la màscara per defecte (umask), he canviat el seu valor i he buscat els fitxers amb el bit SUID.</p>
+      <pre><code>umask
+cd ~
+touch prova_umask.txt
+mkdir prova_umask_dir
+ls -ld prova_umask.txt prova_umask_dir
+umask 027
+touch prova2.txt
+mkdir prova2_dir
+ls -ld prova2.txt prova2_dir
+ls -l /usr/bin/passwd
+find /usr/bin -perm -4000 2&gt;/dev/null</code></pre>
+      <figure><img src="captures/permisos/08-1.png" alt="Permisos, nivell 8"></figure>
+
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="quotes-disc">
