@@ -212,17 +212,7 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
       <h2>👥 4. Gestió d'usuari i grup i permisos</h2>
       <h3>Gestió d’usuaris i grups:</h3>
 
-<h3>Resum · Conceptes</h3>
-<p><strong>Usuari:</strong> identitat del sistema, amb nom, UID, carpeta personal i shell. Els fitxers i els processos sempre pertanyen a un usuari.</p>
-<p><strong>UID:</strong> número de l'usuari. 0 és <code>root</code>, de 1 a 999 són usuaris del sistema (serveis), i a partir de 1000 són persones.</p>
-<p><strong>Grup:</strong> conjunt d'usuaris amb nom i número (GID). Serveix per donar permisos a diverses persones alhora.</p>
-<p><strong>Grup principal:</strong> el grup dels fitxers que crea l'usuari. Cada usuari en té un i només un. Ubuntu crea per a cada usuari un grup personal amb el mateix nom.</p>
-<p><strong>Grups secundaris:</strong> altres grups als quals pertany l'usuari. En pot tenir tants com calgui.</p>
-<p><strong>Fitxers importants:</strong> <code>/etc/passwd</code> (usuaris), <code>/etc/shadow</code> (contrasenyes xifrades, només root), <code>/etc/group</code> (grups), <code>/etc/skel</code> (carpeta model de cada usuari nou) i <code>/home</code> (carpetes personals).</p>
-<p><strong>Ordres d'Ubuntu:</strong> <code>useradd</code>, <code>userdel</code> i <code>groupadd</code> no pregunten res i no creen carpeta personal si no els ho dius. <code>adduser</code>, <code>deluser</code> i <code>addgroup</code> són interactives i ho fan tot sols.</p>
-<p>Gairebé totes les ordres d'usuaris i grups s'executen amb <code>sudo</code>.</p>
-
-      <h3>Nivell 0 · Conèixer el sistema</h3>
+<h3>Nivell 0 · Conèixer el sistema</h3>
       <p>Captures de la identitat del sistema: l’usuari actual, els UID i GID, les línies de <code>/etc/passwd</code> i la protecció de <code>/etc/shadow</code>.</p>
 <figure><img src="captures/usuaris-grups/00-1.png" alt="Gestió d'usuaris i grups, nivell 0"></figure>
 <figure><img src="captures/usuaris-grups/00-2.png" alt="Gestió d'usuaris i grups, nivell 0"></figure>
