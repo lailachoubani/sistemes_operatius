@@ -210,6 +210,7 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
     </article>
     <article class="apartat" id="usuaris-grups-permisos">
       <h2>👥 4. Gestió d'usuari i grup i permisos</h2>
+      <h3>Gestió d’usuaris i grups:</h3>
 <h3>Resum · Conceptes</h3>
 <p><strong>Usuari:</strong> identitat del sistema, amb nom, UID, carpeta personal i shell. Els fitxers i els processos sempre pertanyen a un usuari.</p>
 <p><strong>UID:</strong> número de l'usuari. 0 és <code>root</code>, de 1 a 999 són usuaris del sistema (serveis), i a partir de 1000 són persones.</p>
@@ -234,7 +235,9 @@ tail -5 /etc/passwd</code></pre>
 sudo grep $USER /etc/shadow</code></pre>
 <p><strong>0.3 Membres del grup sudo i contingut de /etc/skel</strong></p><pre><code>getent group sudo
 ls -a /etc/skel</code></pre>
-<p><strong>Captura 1 (pendent):</strong> sortides dels passos 2, 3, 5 i 6.</p>
+      <figure><img src="captures/usuaris-grups/00-1.png" alt="Gestió d'usuaris i grups, nivell 0"></figure>
+      <figure><img src="captures/usuaris-grups/00-2.png" alt="Gestió d'usuaris i grups, nivell 0"></figure>
+      <figure><img src="captures/usuaris-grups/00-3.png" alt="Gestió d'usuaris i grups, nivell 0"></figure>
 
 <h3>Nivell 1 · Crear usuaris</h3>
 <p><strong>1.1 Crear la Núria amb useradd (sense opcions)</strong></p><pre><code>sudo useradd nuria
@@ -254,7 +257,14 @@ sudo passwd marc</code></pre>
 <pre><code>grep laia /etc/passwd</code></pre>
 <p><strong>1.6 Comprovació</strong></p><pre><code>getent passwd nuria pau marc laia
 ls /home</code></pre>
-<p><strong>Captura 2 (pendent):</strong> sortida de <code>getent passwd nuria pau marc laia</code> i de <code>ls /home</code>.</p>
+      <figure><img src="captures/usuaris-grups/01-1.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-2.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-3.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-4.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-5.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-6.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-7.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
+      <figure><img src="captures/usuaris-grups/01-8.png" alt="Gestió d'usuaris i grups, nivell 1"></figure>
 
 <h3>Nivell 2 · Iniciar sessió com a altre usuari</h3>
 <p><strong>2.1 Des del terminal</strong></p><pre><code>su - nuria
@@ -266,7 +276,7 @@ exit</code></pre>
 <p>Si surt <code>su: Authentication failure</code>, la contrasenya és la de l'usuari al qual entres: <code>Pixel.2026</code>.</p>
 <p><strong>2.2 Des de l'entorn gràfic</strong></p>
 <p>Tanca la sessió, entra com a <code>Pau Serra</code> amb la contrasenya de la missió, obre un terminal i escriu <code>whoami</code> i <code>ls</code>. Després torna a entrar amb el teu usuari.</p>
-<p><strong>Captura 3 (pendent):</strong> terminal amb <code>su - nuria</code>, <code>whoami</code>, <code>pwd</code>, <code>ls -l</code> i <code>exit</code>.</p>
+      <figure><img src="captures/usuaris-grups/02-1.png" alt="Gestió d'usuaris i grups, nivell 2"></figure>
 
 <h3>Nivell 3 · Crear i esborrar grups</h3>
 <p><strong>3.1 Crear grups</strong></p><pre><code>sudo groupadd programadors
@@ -278,7 +288,8 @@ sudo addgroup becaris</code></pre>
 tail -5 /etc/group
 sudo groupdel progamadors
 getent group progamadors</code></pre>
-<p><strong>Captura 4 (pendent):</strong> sortida de <code>tail -5 /etc/group</code> abans d'esborrar, i el <code>groupdel</code> amb la comprovació.</p>
+      <figure><img src="captures/usuaris-grups/03-1.png" alt="Gestió d'usuaris i grups, nivell 3"></figure>
+      <figure><img src="captures/usuaris-grups/03-2.png" alt="Gestió d'usuaris i grups, nivell 3"></figure>
 
 <h3>Nivell 4 · Afegir i treure usuaris dels grups</h3>
 <p><strong>4.1 Afegir sense perdre grups</strong></p><pre><code>sudo usermod -aG programadors nuria
@@ -295,7 +306,10 @@ groups nuria</code></pre>
 <p><strong>4.3 Treure un usuari d'un grup</strong></p><pre><code>sudo gpasswd -d laia artistes</code></pre>
 <p>També es pot fer amb <code>sudo deluser laia artistes</code>.</p>
 <p><strong>4.4 Comprovació</strong></p><pre><code>getent group programadors artistes testers becaris</code></pre>
-<p><strong>Captura 5 (pendent):</strong> l'error del pas 4.2, l'arranjament i la sortida de la comprovació.</p>
+      <figure><img src="captures/usuaris-grups/04-1.png" alt="Gestió d'usuaris i grups, nivell 4"></figure>
+      <figure><img src="captures/usuaris-grups/04-2.png" alt="Gestió d'usuaris i grups, nivell 4"></figure>
+      <figure><img src="captures/usuaris-grups/04-3.png" alt="Gestió d'usuaris i grups, nivell 4"></figure>
+      <figure><img src="captures/usuaris-grups/04-4.png" alt="Gestió d'usuaris i grups, nivell 4"></figure>
 
 <h3>Nivell 5 · Canviar el grup principal</h3>
 <p><strong>5.1 Abans del canvi</strong></p><pre><code>id pau
@@ -310,7 +324,9 @@ touch codi_despres.py
 ls -l
 exit</code></pre>
 <p>Els fitxers que ja existien no canvien de grup. Només els nous agafen el grup principal.</p>
-<p><strong>Captura 6 (pendent):</strong> els dos <code>id pau</code> (abans i després) i el <code>ls -l</code> final.</p>
+      <figure><img src="captures/usuaris-grups/05-1.png" alt="Gestió d'usuaris i grups, nivell 5"></figure>
+      <figure><img src="captures/usuaris-grups/05-2.png" alt="Gestió d'usuaris i grups, nivell 5"></figure>
+      <figure><img src="captures/usuaris-grups/05-3.png" alt="Gestió d'usuaris i grups, nivell 5"></figure>
 
 <h3>Nivell 6 · Bloquejar i desbloquejar un compte</h3>
 <p><strong>6.1 Bloquejar Marc</strong></p><pre><code>sudo passwd -S marc
@@ -323,7 +339,9 @@ sudo grep marc /etc/shadow</code></pre>
 sudo passwd -S marc
 su - marc
 exit</code></pre>
-<p><strong>Captura 7 (pendent):</strong> el <code>!</code> a <code>/etc/shadow</code>, l'error <code>Authentication failure</code> i l'estat <code>P</code> després de desbloquejar.</p>
+      <figure><img src="captures/usuaris-grups/06-1.png" alt="Gestió d'usuaris i grups, nivell 6"></figure>
+      <figure><img src="captures/usuaris-grups/06-2.png" alt="Gestió d'usuaris i grups, nivell 6"></figure>
+      <figure><img src="captures/usuaris-grups/06-3.png" alt="Gestió d'usuaris i grups, nivell 6"></figure>
 <p>No bloquegis mai el teu propi usuari. Si ho fas, no podràs fer servir <code>sudo</code> per desbloquejar-te.</p>
 
 <h3>Nivell 7 · Canviar el nom d'un usuari</h3>
@@ -340,7 +358,9 @@ ls -l /home/nvidal
 su - nvidal
 whoami
 exit</code></pre>
-<p><strong>Captura 8 (pendent):</strong> el primer <code>id nvidal</code> i el del pas 7.3.</p>
+      <figure><img src="captures/usuaris-grups/07-1.png" alt="Gestió d'usuaris i grups, nivell 7"></figure>
+      <figure><img src="captures/usuaris-grups/07-2.png" alt="Gestió d'usuaris i grups, nivell 7"></figure>
+      <figure><img src="captures/usuaris-grups/07-3.png" alt="Gestió d'usuaris i grups, nivell 7"></figure>
 
 <h3>Nivell 8 · Esborrar usuaris i grups</h3>
 <p><strong>8.1 Esborrar Laia sense -r</strong></p><pre><code>ls -l /home
@@ -353,7 +373,8 @@ ls -l /home</code></pre>
 getent group becaris</code></pre>
 <p><strong>8.4 Estat final de PixelForge</strong></p><pre><code>getent passwd nvidal pau marc
 getent group programadors artistes testers</code></pre>
-<p><strong>Captura 9 (pendent):</strong> la carpeta amb propietari <code>1004</code> del pas 8.1, la comprovació de l'estat final i el repte 8.</p>
+      <figure><img src="captures/usuaris-grups/08-1.png" alt="Gestió d'usuaris i grups, nivell 8"></figure>
+      <figure><img src="captures/usuaris-grups/08-2.png" alt="Gestió d'usuaris i grups, nivell 8"></figure>
 
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
