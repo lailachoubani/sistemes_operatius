@@ -202,6 +202,73 @@ rm -rf disc.img recup.1 recup_zeros.1 originals.sha</code></pre><figure><img src
     </article>
     <article class="apartat" id="gestio-processos">
       <h2>⚙️ 2. Gestió de processos</h2>
+      <h3>Nivell 0 · Preparar el cas</h3>
+      <p>He entrat a la carpeta de treball i he executat l’script del cas, que fa anar el servidor lent.</p>
+      <pre><code>cd ~/missio
+ls -l
+./sospitosos.sh</code></pre>
+      <figure><img src="captures/processos/00-1.png" alt="Contingut de la carpeta missio i execució de sospitosos.sh."><figcaption>Contingut de la carpeta <code>missio</code> i execució de <code>sospitosos.sh</code>.</figcaption></figure>
+
+      <h3>Nivell 1 · Reconeixement · veure els processos</h3>
+      <p>He mostrat l’arbre de processos per veure quins processos són sospitosos.</p>
+      <pre><code>pstree -p
+pstree -p | grep minador</code></pre>
+      <figure><img src="captures/processos/01-1.png" alt="Arbre de processos amb pstree."><figcaption>Arbre de processos amb <code>pstree</code>.</figcaption></figure>
+      <figure><img src="captures/processos/01-2.png" alt="Els dos processos minador (PID 8642 i 8643)."><figcaption>Els dos processos <code>minador</code> (PID 8642 i 8643).</figcaption></figure>
+
+      <h3>Nivell 2 · Qui consumeix més?</h3>
+      <p>He mirat quins processos consumeixen més CPU amb <code>top</code>.</p>
+      <pre><code>top</code></pre>
+      <figure><img src="captures/processos/02-1.png" alt="Els processos minador (PID 8642 i 8643) són els que més CPU consumeixen."><figcaption>Els processos <code>minador</code> (PID 8642 i 8643) són els que més CPU consumeixen.</figcaption></figure>
+
+      <h3>Nivell 3 · Interrogatori · filtrar amb ps</h3>
+      <p>He filtrat els processos sospitosos amb <code>pgrep</code> i <code>ps</code> per veure’n el PID, el PPID, l’usuari i l’estat.</p>
+      <pre><code>ps aux | grep [m]inador
+pgrep minador
+pgrep -l 'minador|espia|backup'
+ps -o pid,ppid,user,stat,etime,%cpu,comm -C minador,espia,backup_nocturn
+ps -o pid,comm -p 1520</code></pre>
+      <figure><img src="captures/processos/03-1.png" alt="Filtre dels processos minador, espia i backup_nocturn amb pgrep i ps."><figcaption>Filtre dels processos <code>minador</code>, <code>espia</code> i <code>backup_nocturn</code> amb <code>pgrep</code> i <code>ps</code>.</figcaption></figure>
+
+      <h3>Nivell 4 · La descàrrega urgent · primer i segon pla</h3>
+      <p>He executat la descàrrega, l’he aturat amb Ctrl+Z i l’he passada a segon pla amb <code>bg</code>.</p>
+      <pre><code>./descarrega.sh
+# Ctrl+Z
+jobs -l
+bg %1
+fg %1
+# Ctrl+Z
+bg %1
+watch -n 1 cat progres.txt</code></pre>
+      <figure><img src="captures/processos/04-1.png" alt="Descàrrega aturada i tornada a segon pla amb jobs, bg i fg, i progrés amb watch."><figcaption>Descàrrega aturada i tornada a segon pla amb <code>jobs</code>, <code>bg</code> i <code>fg</code>, i progrés amb <code>watch</code>.</figcaption></figure>
+
+      <h3>Nivell 5 · Prioritat a la descàrrega</h3>
+      <p>He mirat el consum dels processos <code>minador</code> per comparar-lo amb el de la descàrrega.</p>
+      <pre><code>top -p 8642,8643</code></pre>
+      <figure><img src="captures/processos/05-1.png" alt="Consum dels processos minador amb top -p."><figcaption>Consum dels processos <code>minador</code> amb <code>top -p</code>.</figcaption></figure>
+
+      <h3>Nivell 6 · Neutralitzar els intrusos</h3>
+      <p>He aturat i he tancat els processos sospitosos, i he comprovat l’estat de cada procés.</p>
+      <pre><code>kill 8642 8643
+pgrep -l minador
+kill 8645        # espia no es deixa tancar amb un kill normal
+# Ctrl+C
+kill -9 8645
+pgrep -l espia
+pgrep -l backup
+kill -STOP 8644
+ps -o pid,stat,comm -p 8644
+kill -CONT 8644
+ps -o pid,stat,comm -p 8644</code></pre>
+      <figure><img src="captures/processos/06-1.png" alt="Terminació dels processos amb kill, i l’estat de backup_nocturn amb ps."><figcaption>Terminació dels processos amb <code>kill</code>, i l’estat de <code>backup_nocturn</code> amb <code>ps</code>.</figcaption></figure>
+
+      <h3>Nivell 7 · Que la descàrrega no es perdi</h3>
+      <p>La descàrrega s’ha quedat aturada en tancar la finestra del terminal T1. Després l’he tornada a executar i he comprovat que s’ha completat, amb <code>pstree</code> per veure el procés.</p>
+      <pre><code>pstree -ps $(pgrep descarrega)</code></pre>
+      <figure><img src="captures/processos/07-1.png" alt="Descàrrega al 60 % abans de tancar la finestra."><figcaption>Descàrrega al 60 % abans de tancar la finestra.</figcaption></figure>
+      <figure><img src="captures/processos/07-2.png" alt="Descàrrega completada en 39 s."><figcaption>Descàrrega completada en 39 s.</figcaption></figure>
+      <figure><img src="captures/processos/07-3.png" alt="Arbre de processos de descarrega.sh amb pstree."><figcaption>Arbre de processos de <code>descarrega.sh</code> amb <code>pstree</code>.</figcaption></figure>
+
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
     <article class="apartat" id="copies-seguretat">
