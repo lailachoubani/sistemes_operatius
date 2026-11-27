@@ -29,57 +29,57 @@
         <tr><th>#</th><th>Apartat</th></tr>
       </thead>
       <tbody>
-        <tr><td>0</td><td><a href="#duel-ring">0 · Preparar el ring</a></td></tr>
-        <tr><td>1</td><td><a href="#duel-1">Assalt 1 · Processos</a></td></tr>
-        <tr><td>2</td><td><a href="#duel-2">Assalt 2 · Formateig</a></td></tr>
-        <tr><td>3</td><td><a href="#duel-3">Assalt 3 · Particions i sistemes de fitxers</a></td></tr>
-        <tr><td>4</td><td><a href="#duel-4">Assalt 4 · Usuaris i permisos</a></td></tr>
-        <tr><td>5</td><td><a href="#duel-5">Assalt 5 · Còpies i tasques programades</a></td></tr>
-        <tr><td>🏁</td><td><a href="#duel-final">La porta final</a></td></tr>
+        <tr><td>0</td><td><a href="#duel-pas0">Preparació de l'entorn</a></td></tr>
+        <tr><td>1</td><td><a href="#duel-1">Gestió de processos</a></td></tr>
+        <tr><td>3</td><td><a href="#duel-3">Particions i sistemes de fitxers</a></td></tr>
+        <tr><td>4</td><td><a href="#duel-4">Usuaris, grups i permisos ACL</a></td></tr>
+        <tr><td>5</td><td><a href="#duel-5">Tasques programades</a></td></tr>
+        <tr><td>6</td><td><a href="#duel-final">Resolució final</a></td></tr>
       </tbody>
     </table>
 
-    <article class="apartat" id="duel-ring">
-      <h2>0 · Preparar el ring</h2>
+    <article class="apartat" id="duel-pas0">
+      <h2>Pas 0: Preparació de l'entorn</h2>
+      <p>Formatació de la unitat secundària en sistema de fitxers NTFS amb l'etiqueta PROVES i lletra d'unitat E:.</p>
+      <figure><img src="captures/duel/01-1.png" alt="Pas 0: Preparació de l'entorn"></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="duel-1">
-      <h2>Assalt 1 · Processos</h2>
-      <p class="pendent"><strong>Captura 1:</strong> Pestanya Detalles amb el powershell.exe del minador en prioritat Baixa, i la porta 1 oberta</p>
-      <p class="pendent"><strong>Captura 2:</strong> Monitor de recursos amb el minador en estat suspès</p>
-      <p class="pendent"><strong>Captura 3:</strong> Pestanya d’arrencada amb la columna d’impacte</p>
-      <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
-    </article>
-
-    <article class="apartat" id="duel-2">
-      <h2>Assalt 2 · Formateig</h2>
-      <p class="pendent"><strong>Captura 4:</strong> Hashes dels originals i dels fitxers recuperats iguals, i la porta 2 oberta</p>
-      <p class="pendent"><strong>Captura 5:</strong> Carpeta despres sense cap fitxer recuperat</p>
+      <h2>Assalt 1: Gestió de processos</h2>
+      <p>Identificació del PID de PowerShell (5900), canvi de prioritat a Idle, verificació de la baixada d'ús de CPU i revisió de programes d'inici.</p>
+      <figure><img src="captures/duel/02-1.png" alt="Assalt 1: Gestió de processos"></figure>
+      <figure><img src="captures/duel/02-2.png" alt="Assalt 1: Gestió de processos"></figure>
+      <figure><img src="captures/duel/02-3.png" alt="Assalt 1: Gestió de processos"></figure>
+      <figure><img src="captures/duel/02-4.png" alt="Assalt 1: Gestió de processos"></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="duel-3">
-      <h2>Assalt 3 · Particions i sistemes de fitxers</h2>
-      <p class="pendent"><strong>Captura 6:</strong> Administració de discos amb el volum RADIOLOGIA reduït, la línia Bytes por clúster de fsutil, les propietats amb el Tamaño en disco i la porta 3 oberta</p>
+      <h2>Assalt 3: Particions i sistemes de fitxers</h2>
+      <p>Eliminació de la lletra E:, formatació en NTFS amb mida de clúster de 64 KB (65536 bytes) i muntatge del volum a C:\duel\radiologia.</p>
+      <figure><img src="captures/duel/03-1.png" alt="Assalt 3: Particions i sistemes de fitxers"></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="duel-4">
-      <h2>Assalt 4 · Usuaris i permisos</h2>
-      <p class="pendent"><strong>Captura 7:</strong> Pestanya Acceso efectivo d’en Pau, icacls de la carpeta, les dues proves amb runas i la porta 4 oberta</p>
+      <h2>Assalt 4: Usuaris, grups i permisos ACL</h2>
+      <p>Creació del directori C:\PixelForge\art, eliminació d'herència de permisos i assignació d'accés exclusiu a Administradores i al grup local artistes.</p>
+      <figure><img src="captures/duel/04-1.png" alt="Assalt 4: Usuaris, grups i permisos ACL"></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="duel-5">
-      <h2>Assalt 5 · Còpies i tasques programades</h2>
-      <p class="pendent"><strong>Captura 8:</strong> Sortida de robocopy /L amb *Archivo EXTRA i el fitxer recuperat</p>
-      <p class="pendent"><strong>Captura 9:</strong> Tasca Copia de la nit al Programador de tareas, amb Desencadenadores, el final de copia.log i la porta 5 oberta</p>
+      <h2>Assalt 5: Tasques programades</h2>
+      <p>Creació de E:\copies\copia.log i programació de la tasca diària «Copia de la nit» amb l'opció StartWhenAvailable activada.</p>
+      <figure><img src="captures/duel/05-1.png" alt="Assalt 5: Tasques programades"></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
     <article class="apartat" id="duel-final">
-      <h2>La porta final</h2>
+      <h2>Porta 6: Resolució final</h2>
+      <p>Execució de porta.ps1 6 per obtenir totes les claus i la frase secreta (+1000 D'AURA DUEL SUPERAT BRO) enviada per correu a la professora.</p>
+      <figure><img src="captures/duel/06-1.png" alt="Porta 6: Resolució final"></figure>
       <p class="tornar-index"><a href="#index-apartats">↑ Tornar a l'índex</a></p>
     </article>
 
